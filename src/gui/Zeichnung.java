@@ -31,7 +31,6 @@ public class Zeichnung extends Canvas {
 	public void paint(Graphics g) {
 		double xval, yval;
 
-
 		// Zeichnen der Funktionslinie
 		diag.newLine();  // neue Linie beginnen
 		g.setColor(Color.GREEN);

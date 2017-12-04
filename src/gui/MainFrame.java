@@ -34,8 +34,6 @@ public class MainFrame extends JFrame {
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
-	private static final String[] z_string = { "Amplitudenmodulation", "Frequenzmodulation" };
-	private static final String[] lb_string = {"Trägerfreq: ","Signalamp: ","Signalfreq: "," Hz "," % "," Hz "};
 
 	private JPanel contentPane;
 
