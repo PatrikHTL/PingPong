@@ -63,7 +63,7 @@ public class MainFrame extends JFrame {
 	private void FrameInit() throws Exception {
 		contentPane = (JPanel) getContentPane();
 		contentPane.setLayout(new BorderLayout());
-		setSize(new Dimension(400, 300));
+		setSize(new Dimension(1000, 700));
 		setTitle("PingPong");
 
 		/*

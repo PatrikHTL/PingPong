@@ -76,22 +76,17 @@ public class Diagramm {
 		g.drawLine(xpix0, ypix0, xpix1, ypix1);
 	}
 
-	public void draw_coord(Graphics g) {
-		// Zeichnen des Koordinatenkreuzes
+	public void draw_field(Graphics g) {
+
+		//oben unten Seitenlinien
+		val_drawLine(g, 1.0, ymax, 1.0, ymin);
+		val_drawLine(g, -1.0, ymax, -1.0, ymin);
+		// Mittellinie
 		val_drawLine(g, 0.0, ymax, 0.0, ymin);
-		val_drawLine(g, xmin, 0.0, xmax, 0.0);
+		//rechts und links Seitenlinien
+		val_drawLine(g, xmin, 0.5, xmax, 0.5);
+		val_drawLine(g, xmin, -0.5, xmax, -0.5);
 		// Zeichnen der Skalierungsmarken
-		double x_mark = (xmax - xmin) / 200.0;
-		val_drawLine(g, -x_mark, 1.0, x_mark, 1.0);
-		val_drawLine(g, -x_mark, 0.5, x_mark, 0.5);
-		val_drawLine(g, -x_mark, -0.5, x_mark, -0.5);
-		val_drawLine(g, -x_mark, -1.0, x_mark, -1.0);
-		double y_mark = (ymax - ymin) / 100.0;
-		double x_pos = Math.PI / 2.0;
-		while (x_pos < xmax) {
-			val_drawLine(g, x_pos, y_mark, x_pos, -y_mark);
-			x_pos += Math.PI / 2.0;
-		}
 	}
 
 	// Beginn einer neuen Diagrammlinie
