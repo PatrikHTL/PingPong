@@ -24,6 +24,7 @@ public class Zeichnung extends Canvas {
 	public void paint(Graphics g) {
 		double xval, yval;
 
+
 		// Zeichnen der Funktionslinie
 		diag.newLine();  // neue Linie beginnen
 		g.setColor(Color.GREEN); 	//Color bestimmen
@@ -47,7 +48,7 @@ public class Zeichnung extends Canvas {
 
 	}
 
-	public static void setSchalegerPosition(Graphics g, int x, int y){
+	public static void setSchlaegerPosition(Graphics g, int x, int y){
 
 	}
 
