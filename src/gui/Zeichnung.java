@@ -40,7 +40,7 @@ public class Zeichnung extends Canvas {
 	}
 
 
-	public void setBallPosition(Graphics g, int x, int y){
+	public static void setBallPosition(Graphics g, int x, int y){
 
 		g.setColor(Color.RED);
 		g.drawRect(x,y,5,5);
@@ -48,7 +48,7 @@ public class Zeichnung extends Canvas {
 
 	}
 
-	public void setSchalegerPosition(Graphics g, int x, int y){
+	public static void setSchlaegerPosition(Graphics g, int x, int y){
 
 	}
 
