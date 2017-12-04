@@ -8,12 +8,12 @@ public class Schlaeger {
 
     public Schlaeger(double Xcord) {    //Constructer weil 2 Schläger existieren
         this.Xcord=Xcord;
-        Zeichnung.setSchlaegerPosition();
+        Zeichnung.setSchalegerPosition();
     }
 
     public void setYcord(double ycord){
         Ycord=ycord;
-        Zeichnung.setSchlaegerPosition();
+        Zeichnung.setSchalegerPosition();
     }
 
     public double getXcord() {

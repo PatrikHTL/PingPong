@@ -11,7 +11,7 @@ public class Ball {
     public static void setCord(Double xcord, Double ycord) {    //Setzen beider Coordinaten (Y,X)
         Xcord = xcord;                                          //Klasse static weil es nur 1 BaLL Gibt
         Ycord = ycord;
-        Zeichnung.setBallposition();
+        Zeichnung.setBallPosition();
     }
 
     public static Double getXcord() {
