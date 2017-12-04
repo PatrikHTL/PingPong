@@ -86,12 +86,12 @@ public class MainFrame extends JFrame {
 		menu_datei.add(mi_beenden);
 		menubar.add(menu_datei);
 
-		menu_mod = new JMenu("Modulation");
+		menu_mod = new JMenu("Modus");
 		menu_mod.getPopupMenu().setLightWeightPopupEnabled(false);
-		rbmi_am = new JRadioButtonMenuItem("Amplitudenmodulation");
+		rbmi_am = new JRadioButtonMenuItem("Single-Mod");
 		rbmi_am.addActionListener(new b_ActionListener());
 		rbmi_am.setSelected(true);
-		rbmi_fm = new JRadioButtonMenuItem("Frequenzmodulation");
+		rbmi_fm = new JRadioButtonMenuItem("Multiplayer-Mod");
 		rbmi_fm.addActionListener(new b_ActionListener());
 		ButtonGroup btngrp = new ButtonGroup();
 		btngrp.add(rbmi_am);
