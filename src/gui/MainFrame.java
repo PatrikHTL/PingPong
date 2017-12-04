@@ -123,68 +123,7 @@ public class MainFrame extends JFrame {
 		// Zeichenfeld
 		//JPanel p_bottom = new JPanel(new BorderLayout());
 		zeich = new Zeichnung(this);
-
-
-		/*
-		 *  Inhalt Rechts
-		 */
-
-		// Titel Beschriftungsfeld
-
-		JLabel lb_title = new JLabel();
-		lb_title.setText("Signalgenerator");
-		lb_title.setFont(new Font("ARIAL", Font.BOLD, 10));
-		lb_title.setHorizontalAlignment(SwingConstants.CENTER);
-
-
-		//Scrollbar werte darunter
-		lb_wert1 = new JLabel();
-		lb_wert2 = new JLabel();
-		lb_wert3 = new JLabel();
-
-		// Scrollbars
-
-		sb1 = new JScrollBar(1, value1, 1, 0, 101);//trägerfreq
-		sb2 = new JScrollBar(1, value2, 1, 0, 51);//signalamp
-		sb3 = new JScrollBar(1, value3, 1, 0, 11);//signalfreq
-
-		sbPanel = new JPanel();
-		sbPanel.setLayout(new GridLayout(2,3));
-		sbPanel.add(sb1);
-		sbPanel.add(sb2);
-		sbPanel.add(sb3);
-		sbPanel.add(lb_wert1);
-		sbPanel.add(lb_wert2);
-		sbPanel.add(lb_wert3);
-
-		//Scrollbar AdjustmentListeners
-		sb1.addAdjustmentListener(new sb_AdjustmentListener());
-		sb2.addAdjustmentListener(new sb_AdjustmentListener());
-		sb3.addAdjustmentListener(new sb_AdjustmentListener());
-
-
-
-
-		/*
-		 *  Splitters
-		 */
-
-		// Vertical Setting/Label Splitter
-
-		JSplitPane sp_label_scroll = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		sp_label_scroll.setEnabled(true);
-		sp_label_scroll.add(lb_title, JSplitPane.TOP);
-		sp_label_scroll.add(sbPanel, JSplitPane.BOTTOM);
-
-		// Main Horizontal Splitter
-
-		JSplitPane sp_plot_settings = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		sp_plot_settings.setResizeWeight(0.7);
-		sp_plot_settings.setEnabled(true);
-		sp_plot_settings.add(zeich, JSplitPane.LEFT);
-		sp_plot_settings.add(sp_label_scroll, JSplitPane.RIGHT);
-
-		contentPane.add(sp_plot_settings, java.awt.BorderLayout.CENTER);
+		contentPane.add(zeich, java.awt.BorderLayout.CENTER);
 
 
 		/*
