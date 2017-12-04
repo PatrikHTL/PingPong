@@ -47,21 +47,11 @@ public class MainFrame extends JFrame {
 
 	// Zeichenfeld
 	private Zeichnung zeich;
-	private int z_status = _AM;
 	private JLabel lb_status;
-	private JLabel lb_wert1;
-	private JLabel lb_wert2;
-	private JLabel lb_wert3;
 
 	// SCrollBars
 	private JPanel sbPanel;
 	private JScrollBar sb1, sb2, sb3;
-
-	//startvariablen
-	private int value1=50;
-	private int value2=25;
-	private int value3=1;
-
 
 	public MainFrame() {
 		try {
@@ -76,7 +66,7 @@ public class MainFrame extends JFrame {
 		contentPane = (JPanel) getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		setSize(new Dimension(400, 300));
-		setTitle("SignalModulator");
+		setTitle("PingPong");
 
 		/*
 		 *  Menü
@@ -131,42 +121,15 @@ public class MainFrame extends JFrame {
 		 */
 
 		lb_status = new JLabel("Statuszeile");
-		lb_status.setText(z_string[z_status]);
 		contentPane.add(lb_status, BorderLayout.SOUTH);
-
-
-
-		sb_AdjustmentHandler();
 	}
-
-
-
-	public int get_zstat() {
-		return z_status;
-	}
-
-	public int get_value1() {
-		return value1;
-	}
-
-	public int get_value2() {
-		return value2;
-	}
-
-	public int get_value3() {
-		return value3;
-	}
-
 
 	public void b_ActionHandler(ActionEvent e) {
 		if (e.getSource() == rbmi_am) {
-			z_status = _AM;
-		} else if(e.getSource() == rbmi_fm){
-			z_status = _FM;
-		}
-		lb_status.setText(z_string[z_status]);
 
-		// Zeichnung aktualisieren
+		} else if(e.getSource() == rbmi_fm){
+
+		}
 		zeich.repaint();
 	}
 
@@ -201,27 +164,5 @@ public class MainFrame extends JFrame {
 			// TODO Auto-generated method stub
 
 		}
-	}
-
-	private void sb_AdjustmentHandler() {
-		value1 = sb1.getValue();
-		value2 = sb2.getValue();
-		value3 = sb3.getValue();
-
-		zeich.repaint();
-		lb_wert1.setText(lb_string[0]+Integer.toString(value1) + lb_string[3]);
-		lb_wert2.setText(lb_string[1]+Integer.toString(value2) + lb_string[4]);
-		lb_wert3.setText(lb_string[2]+ Integer.toString(value3) + lb_string[5]);
-	}
-
-	private class sb_AdjustmentListener implements AdjustmentListener {
-
-		@Override
-		public void adjustmentValueChanged(AdjustmentEvent e) {
-			sb_AdjustmentHandler();
-		}
-
-
-
 	}
 }
