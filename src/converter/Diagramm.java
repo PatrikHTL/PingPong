@@ -93,7 +93,7 @@ public class Diagramm {
 			x_pos += Math.PI / 2.0;
 		}
 	}
-	
+
 	// Beginn einer neuen Diagrammlinie
 	public void newLine() {
 		linestart = true;
