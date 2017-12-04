@@ -26,9 +26,9 @@ public class Zeichnung extends Canvas {
 
 
 		// Zeichnen der Funktionslinie
-		diag.newLine();  // neue Linie beginnen
-		g.setColor(Color.GREEN); 	//Color bestimmen
-		g.drawRect(100,120,10,10); //rechteck zeichnen
+		//diag.newLine();  // neue Linie beginnen
+		//g.setColor(Color.GREEN); 	//Color bestimmen
+		//g.drawRect(100,120,10,10); //rechteck zeichnen
 		//diag.nextLine(g, xval, yval);	//linie fortsetzen
 
 
