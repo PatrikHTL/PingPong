@@ -8,17 +8,17 @@ import java.awt.*;
 public class Schlaeger {
     private final double Xcord;
     private double Ycord;
-    private Zeichnung zeich;
+    private MainFrame main;
 
     public Schlaeger(MainFrame main, double Xcord) {    //Constructer weil 2 Schläger existieren
+        this.main=main;
         this.Xcord=Xcord;
-        this.zeich=main.zeich;
         Ycord=250;
     }
 
     public void setYcord(double ycord){
         Ycord=ycord;
-        zeich.repaint();
+        main.repaintAll();
     }
 
     public double getXcord() {

@@ -11,11 +11,9 @@ public class Ball {
     private double Xspeed=1.0;
     private double Yspeed=1.0;
     private MainFrame main;
-    private Zeichnung zeich;
 
     public Ball(MainFrame main) {
         this.main=main;
-        this.zeich=main.zeich;
     }
 
     public void setCord(double xcord, double ycord) {    //Setzen beider Coordinaten (Y,X)
@@ -42,14 +40,11 @@ public class Ball {
     public void calcNextPosition(){
         Ycord+=Yspeed;
         Xcord+=Xspeed;
-        zeich.repaint();
+        main.repaintAll();
     }
 
-    public void BallBounced(){
-        double buffer;
-        buffer=Yspeed;
-        Yspeed=Xspeed;
-        Xspeed=buffer;
+    public void ballBounced(){
+       Yspeed=Yspeed*-1;
     }
 
     public void paintBall(Graphics g) {

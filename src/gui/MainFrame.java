@@ -63,6 +63,37 @@ public class MainFrame extends JFrame {
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
+
+		Thread moveball=new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					ball.calcNextPosition();
+					double Xcord = ball.getXcord();
+					double Ycord = ball.getYcord();
+					if (Ycord > 700 || Ycord < 0) {
+						ball.ballBounced();
+					}
+					if (Xcord < 0) {
+						//Score
+						ball = new Ball(MainFrame.this);
+					} else if (Xcord > 1000) {
+						//Score
+						ball = new Ball(MainFrame.this);
+					}
+				}
+			}
+		});
+		moveball.start();
+	}
+
+	public void repaintAll(){
+		zeich.repaint();
 	}
 
 	private void FrameInit() throws Exception {
@@ -108,24 +139,12 @@ public class MainFrame extends JFrame {
 		menu_hilfe.addMenuListener(new help_menuListener());
 		setJMenuBar(menubar);
 
-
-		/*
-		 *  Inhalt Links
-		 */
-
-		// Zeichenfeld
-		//JPanel p_bottom = new JPanel(new BorderLayout());
         meinSchlaeger = new Schlaeger(this,49);
         gegnerSchlaeger = new Schlaeger(this, 925);
         ball= new Ball(this);
 		zeich = new Zeichnung(this);
 
 		contentPane.add(zeich, java.awt.BorderLayout.CENTER);
-
-
-		/*
-		 *  Statusbar
-		 */
 
 		lb_status = new JLabel("Statuszeile");
 		contentPane.add(lb_status, BorderLayout.SOUTH);
