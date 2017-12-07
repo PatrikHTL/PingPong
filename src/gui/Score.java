@@ -6,15 +6,15 @@ import gui.Zeichnung;
 
 import java.awt.*;
 
+
 public class Score {
-    private final double Xcord;
     private double Ycord;
     private Zeichnung zeich;
     private int scoreA=0;
     private int scoreB=0;
+    private static Font sanSerifFont = new Font("Serif", Font.BOLD, 24);
 
-    public Score(MainFrame main, double Xcord) {
-        this.Xcord=Xcord;
+    public Score(MainFrame main) {
         this.zeich=main.zeich;
     }
 
@@ -33,7 +33,12 @@ public class Score {
 
 
     public void paintScore(Graphics g){
-        g.setColor(Color.GREEN);
-        g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB),50,10);
+        g.setColor(Color.BLACK);
+
+        g.setFont(sanSerifFont);
+        FontMetrics fm = g.getFontMetrics();
+        int w = fm.stringWidth("and");
+        int h = fm.getAscent();
+        g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 100,100);
     }
 }
