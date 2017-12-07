@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.security.Key;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -46,7 +47,7 @@ public class MainFrame extends JFrame {
 	private JMenuItem mi_beenden;
 	private JRadioButtonMenuItem rbmi_am, rbmi_fm;
 
-	// Zeichenfeld
+
 	public Zeichnung zeich;
 	private JLabel lb_status;
 	public Schlaeger meinSchlaeger, gegnerSchlaeger;
@@ -70,7 +71,7 @@ public class MainFrame extends JFrame {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(3);
+						Thread.sleep(20);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -81,10 +82,10 @@ public class MainFrame extends JFrame {
 						ball.ballBounced();
 					}
 					if (Xcord < 0) {
-						//Score
+						score.incScoreB();
 						ball = new Ball(MainFrame.this);
 					} else if (Xcord > 1000) {
-						//Score
+						score.incScoreA();
 						ball = new Ball(MainFrame.this);
 					}
 				}
@@ -94,6 +95,7 @@ public class MainFrame extends JFrame {
 	}
 
 	public void repaintAll(){
+
 		zeich.repaint();
 	}
 
@@ -157,7 +159,6 @@ public class MainFrame extends JFrame {
 		} else if(e.getSource() == rbmi_fm){
 
 		}
-		zeich.repaint();
 	}
 
 	private class b_ActionListener implements ActionListener {

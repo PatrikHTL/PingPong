@@ -18,7 +18,6 @@ public class Schlaeger {
 
     public void setYcord(double ycord){
         Ycord=ycord;
-        main.repaintAll();
     }
 
     public double getXcord() {

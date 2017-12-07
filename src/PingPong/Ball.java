@@ -8,8 +8,8 @@ import java.awt.*;
 public class Ball {
     private double Xcord=350;
     private double Ycord=250;
-    private double Xspeed=1.0;
-    private double Yspeed=1.0;
+    private double Xspeed=3.0;
+    private double Yspeed=3.0;
     private MainFrame main;
 
     public Ball(MainFrame main) {
