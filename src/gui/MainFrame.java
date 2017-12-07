@@ -149,7 +149,7 @@ public class MainFrame extends JFrame {
 			helpJDialog.setSize(500,100);
 			helpJDialog.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
 			helpJDialog.setModal(true);
-			helpJDialog.add(new JLabel("Bitte lesen Sie die Anleitung oder behalten Sie gefundene Fehler für sich!"));
+			helpJDialog.add(new JLabel("Laden Sie sich die Pro-Version herunter, um die gewünschte Hilfe zu erhalten!"));
 			helpJDialog.setVisible(true);
 		}
 
