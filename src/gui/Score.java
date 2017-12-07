@@ -12,7 +12,7 @@ public class Score {
     private Zeichnung zeich;
     private int scoreA=0;
     private int scoreB=0;
-    private static Font sanSerifFont = new Font("Serif", Font.BOLD, 24);
+    private static Font sanSerifFont = new Font("Serif", Font.BOLD, 100);
 
     public Score(MainFrame main) {
         this.zeich=main.zeich;
@@ -39,6 +39,6 @@ public class Score {
         FontMetrics fm = g.getFontMetrics();
         int w = fm.stringWidth("and");
         int h = fm.getAscent();
-        g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 100,100);
+        g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 407,100);
     }
 }
