@@ -16,6 +16,7 @@ public class Zeichnung extends Canvas {
 	private MainFrame fr;
 	private Diagramm diag;
 	private Schlaeger  meinSchlaeger, gegnerSchlaeger;
+	private Ball ball;
 
 	public Zeichnung(MainFrame mainFrame) {
 		super();
@@ -24,6 +25,7 @@ public class Zeichnung extends Canvas {
 		diag = new Diagramm(this, BORDER_PERCENT, -1, 1, -0.5, 0.5);
 		this.meinSchlaeger=mainFrame.meinSchlaeger;
 		this.gegnerSchlaeger=mainFrame.gegnerSchlaeger;
+		this.ball=fr.ball;
 	}
 
 	public void paint(Graphics g) {
@@ -41,7 +43,7 @@ public class Zeichnung extends Canvas {
 		g.setColor(Color.BLACK);
 		diag.draw_field(g);
 
-		Ball.paintBall(g);
+		ball.paintBall(g);
 		meinSchlaeger.paintSchlaeger(g);
 		gegnerSchlaeger.paintSchlaeger(g);
 	}
