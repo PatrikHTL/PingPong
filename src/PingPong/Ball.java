@@ -6,8 +6,8 @@ import gui.Zeichnung;
 import java.awt.*;
 
 public class Ball {
-    private double Xcord=100.0;
-    private double Ycord=100.0;
+    private double Xcord=350;
+    private double Ycord=250;
     private double Xspeed=1.0;
     private double Yspeed=1.0;
     private MainFrame main;
@@ -54,7 +54,7 @@ public class Ball {
 
     public void paintBall(Graphics g) {
         g.setColor(Color.RED);
-        g.drawRect((int)Xcord,(int)Ycord,5,5);
+        g.drawRect((int)Xcord,(int)Ycord,20,20);
 
     }
 }
