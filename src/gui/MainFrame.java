@@ -115,8 +115,8 @@ public class MainFrame extends JFrame {
 
 		// Zeichenfeld
 		//JPanel p_bottom = new JPanel(new BorderLayout());
-        meinSchlaeger = new Schlaeger(this,3);
-        gegnerSchlaeger = new Schlaeger(this, 100);
+        meinSchlaeger = new Schlaeger(this,49);
+        gegnerSchlaeger = new Schlaeger(this, 925);
         ball= new Ball(this);
 		zeich = new Zeichnung(this);
 

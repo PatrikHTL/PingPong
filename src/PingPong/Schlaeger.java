@@ -13,6 +13,7 @@ public class Schlaeger {
     public Schlaeger(MainFrame main, double Xcord) {    //Constructer weil 2 Schläger existieren
         this.Xcord=Xcord;
         this.zeich=main.zeich;
+        Ycord=250;
     }
 
     public void setYcord(double ycord){
@@ -27,8 +28,9 @@ public class Schlaeger {
     public double getYcord() {
         return Ycord;
     }
+
     public void paintSchlaeger(Graphics g){
         g.setColor(Color.GREEN);
-        g.drawRect((int)Xcord, (int)Ycord, 10, 30);
+        g.drawRect((int)Xcord, (int)Ycord, 20, 100);
     }
 }
