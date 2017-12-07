@@ -51,6 +51,7 @@ public class MainFrame extends JFrame {
 	private JLabel lb_status;
 	public Schlaeger meinSchlaeger, gegnerSchlaeger;
 	public Ball ball;
+	public Score score;
 
 	// SCrollBars
 	private JPanel sbPanel;
@@ -142,8 +143,8 @@ public class MainFrame extends JFrame {
         meinSchlaeger = new Schlaeger(this,49);
         gegnerSchlaeger = new Schlaeger(this, 925);
         ball= new Ball(this);
+		score= new Score(this);
 		zeich = new Zeichnung(this);
-
 		contentPane.add(zeich, java.awt.BorderLayout.CENTER);
 
 		lb_status = new JLabel("Statuszeile");
