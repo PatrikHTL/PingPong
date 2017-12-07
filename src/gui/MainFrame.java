@@ -1,5 +1,8 @@
 package gui;
 
+import PingPong.Ball;
+import PingPong.Schlaeger;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -34,8 +37,6 @@ public class MainFrame extends JFrame {
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
-	private static final String[] z_string = { "Amplitudenmodulation", "Frequenzmodulation" };
-	private static final String[] lb_string = {"Trägerfreq: ","Signalamp: ","Signalfreq: "," Hz "," % "," Hz "};
 
 	private JPanel contentPane;
 
@@ -46,8 +47,10 @@ public class MainFrame extends JFrame {
 	private JRadioButtonMenuItem rbmi_am, rbmi_fm;
 
 	// Zeichenfeld
-	private Zeichnung zeich;
+	public Zeichnung zeich;
 	private JLabel lb_status;
+	public Schlaeger meinSchlaeger, gegnerSchlaeger;
+	public Ball ball;
 
 	// SCrollBars
 	private JPanel sbPanel;
@@ -112,7 +115,11 @@ public class MainFrame extends JFrame {
 
 		// Zeichenfeld
 		//JPanel p_bottom = new JPanel(new BorderLayout());
+        meinSchlaeger = new Schlaeger(this,3);
+        gegnerSchlaeger = new Schlaeger(this, 100);
+        ball= new Ball(this);
 		zeich = new Zeichnung(this);
+
 		contentPane.add(zeich, java.awt.BorderLayout.CENTER);
 
 
