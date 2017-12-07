@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(10);
+						Thread.sleep(3);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
