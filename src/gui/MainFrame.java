@@ -65,6 +65,20 @@ public class MainFrame extends JFrame {
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
+		Thread zeichen = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					zeich.repaint();
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		zeichen.start();
 
 		Thread moveball=new Thread(new Runnable() {
 			@Override

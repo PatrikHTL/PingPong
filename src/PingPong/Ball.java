@@ -44,7 +44,7 @@ public class Ball {
     public void calcNextPosition(){
         Ycord+=Yspeed;
         Xcord+=Xspeed;
-        main.repaintAll();
+       // main.repaintAll();
     }
 
     public void ballBounced(){
