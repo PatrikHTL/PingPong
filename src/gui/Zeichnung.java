@@ -33,7 +33,7 @@ public class Zeichnung extends Canvas {
 
 	@Override
 	public void paint(Graphics g) {
-	    //super.paint(g);
+	    super.paint(g);
 		lock.lock();
 		double xval, yval;
 
