@@ -18,11 +18,6 @@ public class Score {
         this.zeich=main.zeich;
     }
 
-    public void setYcord(double ycord){
-        Ycord=ycord;
-        zeich.repaint();
-    }
-
     public void incScoreA(){
         scoreA++;
     }
@@ -37,8 +32,6 @@ public class Score {
 
         g.setFont(sanSerifFont);
         FontMetrics fm = g.getFontMetrics();
-        int w = fm.stringWidth("and");
-        int h = fm.getAscent();
         g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 407,100);
     }
 }
