@@ -78,7 +78,7 @@ public class MainFrame extends JFrame {
 					ball.calcNextPosition();
 					double Xcord = ball.getXcord();
 					double Ycord = ball.getYcord();
-					if (Ycord > getHeight() -100 || Ycord < 100) {
+					if (Ycord > 620 || Ycord < 10) {
 						ball.ballBounced();
 					}
 					if (Xcord < meinSchlaeger.getXcord()) {
