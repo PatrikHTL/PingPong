@@ -29,9 +29,7 @@ public class Score {
 
     public void paintScore(Graphics g){
         g.setColor(Color.BLACK);
-
         g.setFont(sanSerifFont);
-        FontMetrics fm = g.getFontMetrics();
         g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 407,100);
     }
 }
