@@ -32,7 +32,6 @@ public class Score {
 
         g.setFont(sanSerifFont);
         FontMetrics fm = g.getFontMetrics();
-        //g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 407,100);
-        g.drawRect(50,50,50,50);
+        g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 407,100);
     }
 }

@@ -4,7 +4,6 @@ import java.awt.*;
 
 import PingPong.Ball;
 import PingPong.Schlaeger;
-import converter.Diagramm;
 import gui.MainFrame;
 
 public class Zeichnung extends Canvas {
@@ -14,7 +13,6 @@ public class Zeichnung extends Canvas {
 
 	// Referenz f�r Callback
 	private MainFrame fr;
-	private Diagramm diag;
 	private Schlaeger  meinSchlaeger, gegnerSchlaeger;
 	private Ball ball;
 	private Score score;
@@ -23,7 +21,6 @@ public class Zeichnung extends Canvas {
 		super();
 		this.fr = mainFrame;
 		setBackground(Color.WHITE);
-		diag = new Diagramm(this, BORDER_PERCENT, -1, 1, -0.5, 0.5);
 		this.meinSchlaeger=mainFrame.meinSchlaeger;
 		this.gegnerSchlaeger=mainFrame.gegnerSchlaeger;
 		this.ball=mainFrame.ball;
@@ -43,7 +40,12 @@ public class Zeichnung extends Canvas {
 
 		// Zeichnen des Spielfeldes
 		g.setColor(Color.BLACK);
-		diag.draw_field(g);
+		g.drawLine(50,10,950,10);
+		g.drawLine(50,620,950,620);
+		g.drawLine(50,10,50,620);
+		g.drawLine(950,10,950,620);
+		g.drawLine(500,10,500,620);
+
 		score.paintScore(g);
 		ball.paintBall(g);
 		meinSchlaeger.paintSchlaeger(g);
