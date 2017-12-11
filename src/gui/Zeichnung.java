@@ -44,11 +44,11 @@ public class Zeichnung extends Canvas {
 		// Zeichnen des Spielfeldes
 		g.setColor(Color.BLACK);
 		diag.draw_field(g);
-
+		score.paintScore(g);
 		ball.paintBall(g);
 		meinSchlaeger.paintSchlaeger(g);
 		gegnerSchlaeger.paintSchlaeger(g);
-		score.paintScore(g);
+
 
 	}
 

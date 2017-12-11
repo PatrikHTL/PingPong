@@ -8,15 +8,15 @@ import java.awt.*;
 
 
 public class Score {
-    private double Ycord;
-    private Zeichnung zeich;
+    private MainFrame main;
     private int scoreA=0;
     private int scoreB=0;
     private static Font sanSerifFont = new Font("Serif", Font.BOLD, 100);
 
     public Score(MainFrame main) {
-        this.zeich=main.zeich;
+        this.main=main;
     }
+
 
     public void incScoreA(){
         scoreA++;
@@ -32,6 +32,7 @@ public class Score {
 
         g.setFont(sanSerifFont);
         FontMetrics fm = g.getFontMetrics();
-        g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 407,100);
+        //g.drawString(Integer.toString(scoreA) +" : "+ Integer.toString(scoreB), 407,100);
+        g.drawRect(50,50,50,50);
     }
 }
