@@ -9,10 +9,7 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 //import defauld.Zeichnung_2;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
+import java.awt.event.*;
 import java.security.Key;
 
 import javax.swing.ButtonGroup;
@@ -34,7 +31,7 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements KeyListener{
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
@@ -53,6 +50,8 @@ public class MainFrame extends JFrame {
 	public Schlaeger meinSchlaeger, gegnerSchlaeger;
 	public Ball ball;
 	public Score score;
+	private boolean wPressed;
+	private boolean sPressed;
 
 	// SCrollBars
 	private JPanel sbPanel;
@@ -79,7 +78,6 @@ public class MainFrame extends JFrame {
 			}
 		});
 		zeichen.start();
-
 		Thread moveball=new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -213,6 +211,33 @@ public class MainFrame extends JFrame {
 		public void menuCanceled(MenuEvent e) {
 			// TODO Auto-generated method stub
 
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("KeyPressed");
+		if(e.getKeyChar() == 'w'){
+			wPressed=true;
+		}
+		if(e.getKeyChar() == 's'){
+			sPressed=true;
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		System.out.println("KeyReleased");
+		if(e.getKeyChar() == 'w'){
+			wPressed=false;
+		}
+		if(e.getKeyChar() == 's'){
+			sPressed=false;
 		}
 	}
 }
