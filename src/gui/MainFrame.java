@@ -78,15 +78,23 @@ public class MainFrame extends JFrame {
 					ball.calcNextPosition();
 					double Xcord = ball.getXcord();
 					double Ycord = ball.getYcord();
-					if (Ycord > 700 || Ycord < 0) {
+					if (Ycord > getHeight() -100 || Ycord < 100) {
 						ball.ballBounced();
 					}
-					if (Xcord < 0) {
-						score.incScoreB();
-						ball = new Ball(MainFrame.this);
-					} else if (Xcord > 1000) {
-						score.incScoreA();
-						ball = new Ball(MainFrame.this);
+					if (Xcord < meinSchlaeger.getXcord()) {
+						if(ball.getYcord()>meinSchlaeger.getXcord()-50 && ball.getYcord()<meinSchlaeger.getXcord()+50){
+							ball.ballBouncedX();
+						}else {
+							score.incScoreB();
+							ball.resetBall();
+						}
+					} else if (Xcord > gegnerSchlaeger.getXcord()) {
+						if(ball.getYcord()>gegnerSchlaeger.getXcord()-50 && ball.getYcord()<gegnerSchlaeger.getXcord()+50){
+							ball.ballBouncedX();
+						}else {
+							score.incScoreA();
+							ball.resetBall();
+						}
 					}
 				}
 			}
