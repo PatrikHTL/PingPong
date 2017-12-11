@@ -14,20 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollBar;
-import javax.swing.JSplitPane;
-import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.event.MenuEvent;
 //import defauld.MainFrame_2;
 import javax.swing.event.MenuListener;
@@ -35,6 +22,8 @@ import javax.swing.event.MenuListener;
 
 public class MainFrame extends JFrame {
 	// Konstanten
+
+
 	public static final int _AM = 0;
 	public static final int _FM = 1;
 
@@ -42,7 +31,7 @@ public class MainFrame extends JFrame {
 
 	// Menü
 	private JMenuBar menubar;
-	private JMenu menu_datei, menu_mod, menu_hilfe;
+	private JMenu menu_datei, menu_mod, menu_hilfe, menu_starten;
 	private JMenuItem mi_beenden;
 	private JRadioButtonMenuItem rbmi_am, rbmi_fm;
 
@@ -57,6 +46,16 @@ public class MainFrame extends JFrame {
 	private JScrollBar sb1, sb2, sb3;
 
 	public MainFrame() {
+
+        Object[] possibilities = {"Single-Mod", "Multi-Mod", "Multi-Mod online"};
+        String s = (String)JOptionPane.showInputDialog(
+                null,
+                "Which mode would you choose?\n",
+                "Start Game",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                possibilities,
+                "ham");
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			FrameInit();
@@ -103,9 +102,14 @@ public class MainFrame extends JFrame {
 		menu_mod.add(rbmi_fm);
 		menubar.add(menu_mod);
 
-		menu_hilfe = new JMenu("Hife");
+		menu_hilfe = new JMenu("Hilfe");
 		menubar.add(menu_hilfe);
 		menu_hilfe.addMenuListener(new help_menuListener());
+		setJMenuBar(menubar);
+
+		menu_starten = new JMenu("Starten");
+		menubar.add(menu_starten);
+		menu_hilfe.addMenuListener(new start_menuListener());
 		setJMenuBar(menubar);
 
 
@@ -143,6 +147,39 @@ public class MainFrame extends JFrame {
 	private class b_ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			b_ActionHandler(e);
+		}
+	}
+
+	private class start_menuListener implements MenuListener {
+
+		@Override
+		public void menuSelected(MenuEvent e) {
+			JFrame frame = new JFrame();
+			JPanel panel = new JPanel();
+			JButton singleMod = new JButton("Single-Modus");
+			JButton multiMod = new JButton("Multi-Modus");
+
+			frame.setTitle("Start Game");
+			frame.setSize(500, 200);
+			frame.add(new JLabel("Lets play a Game"));
+
+			singleMod.setVisible(true);
+			multiMod.setVisible(true);
+			panel.add(singleMod);
+			panel.add(multiMod);
+			frame.add(panel);
+			frame.setVisible(true);
+
+	}
+
+		@Override
+		public void menuDeselected(MenuEvent e) {
+
+		}
+
+		@Override
+		public void menuCanceled(MenuEvent e) {
+
 		}
 	}
 
