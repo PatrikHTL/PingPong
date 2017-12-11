@@ -17,8 +17,12 @@ public class Ball {
     }
 
     public void setCord(double xcord, double ycord) {    //Setzen beider Coordinaten (Y,X)
-        Xcord = xcord;                                          //Klasse static weil es nur 1 BaLL Gibt
+        Xcord = xcord;
         Ycord = ycord;
+    }
+    public void resetBall(){
+        Xcord=350;
+        Ycord=250;
     }
 
     public double getXcord() {
@@ -51,5 +55,9 @@ public class Ball {
         g.setColor(Color.RED);
         g.drawRect((int)Xcord,(int)Ycord,20,20);
 
+    }
+
+    public void ballBouncedX() {
+        Xspeed=Xspeed*-1;
     }
 }
