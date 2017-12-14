@@ -8,7 +8,9 @@ import PingPong.Ball;
 import PingPong.Schlaeger;
 import gui.MainFrame;
 
-public class Zeichnung extends Canvas {
+import javax.swing.*;
+
+public class Zeichnung extends JPanel {
 	// Randbereich in %
 	private static final int BORDER_PERCENT = 5;
 	// xmin, xmax, deltax
@@ -32,28 +34,8 @@ public class Zeichnung extends Canvas {
 	}
 
 	@Override
-	public void paint(Graphics g) {
-	    super.paint(g);
-		lock.lock();
-		double xval, yval;
-
-		g.setColor(Color.BLACK);
-		g.drawLine(50,10,950,10);
-		g.drawLine(50,620,950,620);
-		g.drawLine(50,10,50,620);
-		g.drawLine(950,10,950,620);
-		g.drawLine(500,10,500,620);
-
-		score.paintScore(g);
-		ball.paintBall(g);
-		meinSchlaeger.paintSchlaeger(g);
-		gegnerSchlaeger.paintSchlaeger(g);
-		lock.unlock();
-	}
-
-	@Override
-	public void update(Graphics g){
-	    super.update(g);
+    public void paint(Graphics g) {
+        super.paint(g);
         lock.lock();
         double xval, yval;
 

@@ -66,11 +66,6 @@ public class MainFrame extends JFrame implements KeyListener {
 			public void run() {
 				while (true) {
 					zeich.repaint();
-					try {
-						Thread.sleep(20);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 				}
 			}
 		});
@@ -156,8 +151,8 @@ public class MainFrame extends JFrame implements KeyListener {
 		menu_hilfe.addMenuListener(new help_menuListener());
 		setJMenuBar(menubar);
 
-        meinSchlaeger = new Schlaeger(this,49);
-        gegnerSchlaeger = new Schlaeger(this, 925);
+        meinSchlaeger = new Schlaeger(this,50);
+        gegnerSchlaeger = new Schlaeger(this, 930);
         ball= new Ball(this);
 		score= new Score(this);
 		zeich = new Zeichnung(this);
