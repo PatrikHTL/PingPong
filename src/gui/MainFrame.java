@@ -39,6 +39,7 @@ public class MainFrame extends JFrame{
 	public Score score;
 	private boolean wPressed;
 	private boolean sPressed;
+	private String[] gamemod={"Single-Player","Multi-Player","Online"};
 
 
 	public MainFrame() {
@@ -136,6 +137,22 @@ public class MainFrame extends JFrame{
 
 				if (key == KeyEvent.VK_DOWN && meinSchlaeger.getYcord()<=515) {
 					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && gamemod.equals("Multi-Player") ) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_S && gegnerSchlaeger.getYcord()<=515 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_A  && gegnerSchlaeger.getYcord()>=11 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_D && gegnerSchlaeger.getYcord()<=515 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
 				}
 			}
 
