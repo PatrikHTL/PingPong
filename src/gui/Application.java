@@ -32,5 +32,6 @@ public class Application {
                 new Application();
             }
         });
+
     }
 }
