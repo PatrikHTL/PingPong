@@ -67,11 +67,6 @@ public class MainFrame extends JFrame {
 			public void run() {
 				while (true) {
 					zeich.repaint();
-					try {
-						Thread.sleep(20);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 				}
 			}
 		});
