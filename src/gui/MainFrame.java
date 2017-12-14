@@ -54,9 +54,6 @@ public class MainFrame extends JFrame {
 	public Ball ball;
 	public Score score;
 
-	// SCrollBars
-	private JPanel sbPanel;
-	private JScrollBar sb1, sb2, sb3;
 
 	public MainFrame() {
 		try {
@@ -70,11 +67,6 @@ public class MainFrame extends JFrame {
 			public void run() {
 				while (true) {
 					zeich.repaint();
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 				}
 			}
 		});
@@ -116,14 +108,11 @@ public class MainFrame extends JFrame {
 		moveball.start();
 	}
 
-	public void repaintAll(){
-
-		zeich.repaint();
-	}
 
 	private void FrameInit() throws Exception {
 		contentPane = (JPanel) getContentPane();
 		contentPane.setLayout(new BorderLayout());
+		contentPane.setDoubleBuffered(true);
 		setSize(new Dimension(1000, 700));
 		setTitle("PingPong");
 
