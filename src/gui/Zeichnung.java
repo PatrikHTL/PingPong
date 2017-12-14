@@ -51,8 +51,8 @@ public class Zeichnung extends JPanel {
         meinSchlaeger.paintSchlaeger(g);
         gegnerSchlaeger.paintSchlaeger(g);
         lock.unlock();
-    }
 
+    }
 
 
 

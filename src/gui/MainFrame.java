@@ -23,7 +23,7 @@ import javax.swing.event.MenuListener;
 import static javax.swing.JOptionPane.*;
 
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame{
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
@@ -42,7 +42,9 @@ public class MainFrame extends JFrame {
 	public Schlaeger meinSchlaeger, gegnerSchlaeger;
 	public Ball ball;
 	public Score score;
-	public String GameMod;
+	private boolean wPressed;
+	private boolean sPressed;
+	private String[] gamemod={"Single-Player","Multi-Player","Online"};
 
 
 	public MainFrame() {
@@ -79,7 +81,6 @@ public class MainFrame extends JFrame {
 			}
 		});
 		zeichen.start();
-
 		Thread moveball=new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -96,14 +97,14 @@ public class MainFrame extends JFrame {
 						ball.ballBounced();
 					}
 					if (Xcord < meinSchlaeger.getXcord()) {
-						if(ball.getYcord()>meinSchlaeger.getXcord()-50 && ball.getYcord()<meinSchlaeger.getXcord()+50){
+						if(Ycord>meinSchlaeger.getYcord() && Ycord<meinSchlaeger.getYcord()+100){
 							ball.ballBouncedX();
 						}else {
 							score.incScoreB();
 							ball.resetBall();
 						}
 					} else if (Xcord > gegnerSchlaeger.getXcord()) {
-						if(ball.getYcord()>gegnerSchlaeger.getXcord()-50 && ball.getYcord()<gegnerSchlaeger.getXcord()+50){
+						if(Ycord>gegnerSchlaeger.getYcord()&& Ycord<gegnerSchlaeger.getYcord()+100){
 							ball.ballBouncedX();
 						}else {
 							score.incScoreA();
@@ -121,6 +122,58 @@ public class MainFrame extends JFrame {
 		contentPane = (JPanel) getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		contentPane.setDoubleBuffered(true);
+		contentPane.setFocusable(true);
+		contentPane.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+
+				int key = e.getKeyCode();
+
+				if (key == KeyEvent.VK_LEFT && meinSchlaeger.getYcord()>=11 ) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_RIGHT && meinSchlaeger.getYcord()<=515) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_UP  && meinSchlaeger.getYcord()>=11 ) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_DOWN && meinSchlaeger.getYcord()<=515) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && gamemod.equals("Multi-Player") ) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_S && gegnerSchlaeger.getYcord()<=515 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_A  && gegnerSchlaeger.getYcord()>=11 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_D && gegnerSchlaeger.getYcord()<=515 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		});
+
 		setSize(new Dimension(1000, 700));
 		setTitle("PingPong");
 
