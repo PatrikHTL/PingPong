@@ -18,7 +18,7 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
 
-public class MainFrame extends JFrame implements KeyListener {
+public class MainFrame extends JFrame{
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
@@ -109,6 +109,42 @@ public class MainFrame extends JFrame implements KeyListener {
 		contentPane = (JPanel) getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		contentPane.setDoubleBuffered(true);
+		contentPane.setFocusable(true);
+		contentPane.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+
+				int key = e.getKeyCode();
+
+				if (key == KeyEvent.VK_LEFT && meinSchlaeger.getYcord()>=11 ) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_RIGHT && meinSchlaeger.getYcord()<=515) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_UP  && meinSchlaeger.getYcord()>=11 ) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_DOWN && meinSchlaeger.getYcord()<=515) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		});
+
 		setSize(new Dimension(1000, 700));
 		setTitle("PingPong");
 
@@ -198,33 +234,6 @@ public class MainFrame extends JFrame implements KeyListener {
 		public void menuCanceled(MenuEvent e) {
 			// TODO Auto-generated method stub
 
-		}
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		System.out.println("KeyPressed");
-		if(e.getKeyChar() == 'w'){
-			wPressed=true;
-		}
-		if(e.getKeyChar() == 's'){
-			sPressed=true;
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		System.out.println("KeyReleased");
-		if(e.getKeyChar() == 'w'){
-			wPressed=false;
-		}
-		if(e.getKeyChar() == 's'){
-			sPressed=false;
 		}
 	}
 }
