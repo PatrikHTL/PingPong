@@ -9,10 +9,7 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 //import defauld.Zeichnung_2;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
+import java.awt.event.*;
 import java.security.Key;
 
 import javax.swing.*;
@@ -59,12 +56,6 @@ public class MainFrame extends JFrame{
 				possibilities,
 				"ham");
 
-		/*switch(possibilities) {
-			case JOptionPane.OK_OPTION:
-				System.exit(0); //Aktion(en) bei Klicken auf den "Ja-Button"
-			case CANCLE_OPTION:
-				System.exit(0); //Aktion(en) bei Klicken auf den "Cancel-Button"
-		}*/
 
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
