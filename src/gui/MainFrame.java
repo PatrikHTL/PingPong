@@ -86,14 +86,14 @@ public class MainFrame extends JFrame implements KeyListener {
 						ball.ballBounced();
 					}
 					if (Xcord < meinSchlaeger.getXcord()) {
-						if(ball.getYcord()>meinSchlaeger.getXcord()-50 && ball.getYcord()<meinSchlaeger.getXcord()+50){
+						if(Ycord>meinSchlaeger.getYcord()-100 && Ycord<meinSchlaeger.getYcord()){
 							ball.ballBouncedX();
 						}else {
 							score.incScoreB();
 							ball.resetBall();
 						}
 					} else if (Xcord > gegnerSchlaeger.getXcord()) {
-						if(ball.getYcord()>gegnerSchlaeger.getXcord()-50 && ball.getYcord()<gegnerSchlaeger.getXcord()+50){
+						if(Ycord>gegnerSchlaeger.getYcord()-100 && Ycord<gegnerSchlaeger.getYcord()){
 							ball.ballBouncedX();
 						}else {
 							score.incScoreA();
