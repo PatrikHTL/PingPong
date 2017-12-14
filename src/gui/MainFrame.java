@@ -20,6 +20,8 @@ import javax.swing.event.MenuEvent;
 //import defauld.MainFrame_2;
 import javax.swing.event.MenuListener;
 
+import static javax.swing.JOptionPane.*;
+
 
 public class MainFrame extends JFrame {
 	// Konstanten
@@ -40,19 +42,27 @@ public class MainFrame extends JFrame {
 	public Schlaeger meinSchlaeger, gegnerSchlaeger;
 	public Ball ball;
 	public Score score;
+	public String GameMod;
 
 
 	public MainFrame() {
 
 		Object[] possibilities = {"Single-Mod", "Multi-Mod", "Multi-Mod online"};
-		String s = (String) JOptionPane.showInputDialog(
+		String s = (String) showInputDialog(
 				null,
 				"Which mode would you choose?\n",
 				"Start Game",
-				JOptionPane.PLAIN_MESSAGE,
+				PLAIN_MESSAGE,
 				null,
 				possibilities,
 				"ham");
+
+		/*switch(possibilities) {
+			case JOptionPane.OK_OPTION:
+				System.exit(0); //Aktion(en) bei Klicken auf den "Ja-Button"
+			case CANCLE_OPTION:
+				System.exit(0); //Aktion(en) bei Klicken auf den "Cancel-Button"
+		}*/
 
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
