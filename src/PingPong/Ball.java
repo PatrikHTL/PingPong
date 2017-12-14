@@ -53,7 +53,7 @@ public class Ball {
 
     public void paintBall(Graphics g) {
         g.setColor(Color.RED);
-        g.drawRect((int)Xcord,(int)Ycord,20,20);
+        g.drawOval((int)Xcord,(int)Ycord,20,20);
 
     }
 
