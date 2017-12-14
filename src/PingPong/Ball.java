@@ -21,8 +21,8 @@ public class Ball {
         Ycord = ycord;
     }
     public void resetBall(){
-        Xcord=350;
-        Ycord=250;
+        Xcord=450;
+        Ycord=350;
     }
 
     public double getXcord() {

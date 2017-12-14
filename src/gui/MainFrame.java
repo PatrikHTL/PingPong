@@ -19,7 +19,7 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
 
-public class MainFrame extends JFrame implements KeyListener {
+public class MainFrame extends JFrame{
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
@@ -40,13 +40,13 @@ public class MainFrame extends JFrame implements KeyListener {
 	public Score score;
 	private boolean wPressed;
 	private boolean sPressed;
-	private String GameMode;
+	private String[] gamemod={"Single-Player","Multi-Player","Online"};
 
 
 	public MainFrame() {
 
 		Object[] possibilities = {"Single-Mod", "Multi-Mod", "Multi-Mod online"};
-		JOptionPane s = (JOptionPane) JOptionPane.showInputDialog(
+		String s = (String) JOptionPane.showInputDialog(
 				null,
 				"Which mode would you choose?\n",
 				"Start Game",
@@ -55,7 +55,6 @@ public class MainFrame extends JFrame implements KeyListener {
 				possibilities,
 				"ham");
 
-		Object selectedValue = s.getValue();
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			FrameInit();
@@ -113,6 +112,58 @@ public class MainFrame extends JFrame implements KeyListener {
 		contentPane = (JPanel) getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		contentPane.setDoubleBuffered(true);
+		contentPane.setFocusable(true);
+		contentPane.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+
+				int key = e.getKeyCode();
+
+				if (key == KeyEvent.VK_LEFT && meinSchlaeger.getYcord()>=11 ) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_RIGHT && meinSchlaeger.getYcord()<=515) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_UP  && meinSchlaeger.getYcord()>=11 ) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_DOWN && meinSchlaeger.getYcord()<=515) {
+					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && gamemod.equals("Multi-Player") ) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_S && gegnerSchlaeger.getYcord()<=515 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
+				}
+
+				if (key == KeyEvent.VK_A  && gegnerSchlaeger.getYcord()>=11 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				}
+
+				if (key == KeyEvent.VK_D && gegnerSchlaeger.getYcord()<=515 && gamemod.equals("Multi-Player")) {
+					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		});
+
 		setSize(new Dimension(1000, 700));
 		setTitle("PingPong");
 
@@ -153,9 +204,9 @@ public class MainFrame extends JFrame implements KeyListener {
 		menu_hilfe.addMenuListener(new help_menuListener());
 		setJMenuBar(menubar);
 
-        meinSchlaeger = new Schlaeger(this,50);
-        gegnerSchlaeger = new Schlaeger(this, 930);
-        ball= new Ball(this);
+		meinSchlaeger = new Schlaeger(this,50);
+		gegnerSchlaeger = new Schlaeger(this, 930);
+		ball= new Ball(this);
 		score= new Score(this);
 		zeich = new Zeichnung(this);
 		contentPane.add(zeich, java.awt.BorderLayout.CENTER);
@@ -202,33 +253,6 @@ public class MainFrame extends JFrame implements KeyListener {
 		public void menuCanceled(MenuEvent e) {
 			// TODO Auto-generated method stub
 
-		}
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		System.out.println("KeyPressed");
-		if(e.getKeyChar() == 'w'){
-			wPressed=true;
-		}
-		if(e.getKeyChar() == 's'){
-			sPressed=true;
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		System.out.println("KeyReleased");
-		if(e.getKeyChar() == 'w'){
-			wPressed=false;
-		}
-		if(e.getKeyChar() == 's'){
-			sPressed=false;
 		}
 	}
 }
