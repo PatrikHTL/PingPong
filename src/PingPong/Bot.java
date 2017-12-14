@@ -12,7 +12,10 @@ public class Bot extends Thread{
     @Override
     public void run() {
         while(true){
-            main.gegnerSchlaeger.setYcord(main.ball.getYcord()-50);
+            double Y = main.ball.getYcord()-50;
+            if(Y<=520 && Y>=11){
+                main.gegnerSchlaeger.setYcord(Y);
+            }
             try {
                 Thread.sleep(30);
             } catch (InterruptedException e) {

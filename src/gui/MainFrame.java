@@ -101,7 +101,9 @@ public class MainFrame extends JFrame{
 			}
 		});
 		moveball.start();
-		new Bot(MainFrame.this);
+		if(s.equals("Single-Mod")) {
+			new Bot(MainFrame.this);
+		}
 	}
 
 
@@ -122,7 +124,7 @@ public class MainFrame extends JFrame{
 
 				int key = e.getKeyCode();
 
-				if (key == KeyEvent.VK_LEFT && meinSchlaeger.getYcord()>=11 ) {
+				if (key == KeyEvent.VK_LEFT && meinSchlaeger.getYcord()>=11  ) {
 					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
 				}
 
@@ -138,7 +140,7 @@ public class MainFrame extends JFrame{
 					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
 				}
 
-				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Mod") ) {
+				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Mod")) {
 					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
 				}
 
