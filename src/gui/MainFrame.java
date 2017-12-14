@@ -12,20 +12,7 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import java.security.Key;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollBar;
-import javax.swing.JSplitPane;
-import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.event.MenuEvent;
 //import defauld.MainFrame_2;
 import javax.swing.event.MenuListener;
@@ -55,6 +42,17 @@ public class MainFrame extends JFrame implements KeyListener {
 
 
 	public MainFrame() {
+
+		Object[] possibilities = {"Single-Mod", "Multi-Mod", "Multi-Mod online"};
+		String s = (String) JOptionPane.showInputDialog(
+				null,
+				"Which mode would you choose?\n",
+				"Start Game",
+				JOptionPane.PLAIN_MESSAGE,
+				null,
+				possibilities,
+				"ham");
+
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			FrameInit();
@@ -81,8 +79,8 @@ public class MainFrame extends JFrame implements KeyListener {
 					}
 					ball.calcNextPosition();
 					double Xcord = ball.getXcord();
-					double Ycord = ball.getYcord();
-					if (Ycord > 620 || Ycord < 10) {
+					double Ycord = ball.getYcord()+20;
+					if (Ycord > 620 || Ycord < 36) {
 						ball.ballBounced();
 					}
 					if (Xcord < meinSchlaeger.getXcord()) {
