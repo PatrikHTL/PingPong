@@ -1,6 +1,7 @@
 package gui;
 
 import PingPong.Ball;
+import PingPong.Bot;
 import PingPong.Schlaeger;
 
 import java.awt.BorderLayout;
@@ -18,7 +19,7 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame implements KeyListener {
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
@@ -40,13 +41,12 @@ public class MainFrame extends JFrame{
 	private boolean wPressed;
 	private boolean sPressed;
 	private String GameMode;
-	private String[] gamemod={"Single-Player","Multi-Player","Online"};
 
 
 	public MainFrame() {
 
 		Object[] possibilities = {"Single-Mod", "Multi-Mod", "Multi-Mod online"};
-		String s = (String) JOptionPane.showInputDialog(
+		JOptionPane s = (JOptionPane) JOptionPane.showInputDialog(
 				null,
 				"Which mode would you choose?\n",
 				"Start Game",
@@ -104,6 +104,7 @@ public class MainFrame extends JFrame{
 			}
 		});
 		moveball.start();
+		new Bot(MainFrame.this);
 	}
 
 
