@@ -1,6 +1,7 @@
 package gui;
 
 import PingPong.Ball;
+import PingPong.Bot;
 import PingPong.Schlaeger;
 
 import java.awt.BorderLayout;
@@ -39,6 +40,7 @@ public class MainFrame extends JFrame implements KeyListener {
 	public Score score;
 	private boolean wPressed;
 	private boolean sPressed;
+	private String GameMode;
 
 
 	public MainFrame() {
@@ -52,7 +54,6 @@ public class MainFrame extends JFrame implements KeyListener {
 				null,
 				possibilities,
 				"ham");
-
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			FrameInit();
@@ -102,6 +103,7 @@ public class MainFrame extends JFrame implements KeyListener {
 			}
 		});
 		moveball.start();
+		new Bot(MainFrame.this);
 	}
 
 
