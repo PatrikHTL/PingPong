@@ -8,7 +8,9 @@ import PingPong.Ball;
 import PingPong.Schlaeger;
 import gui.MainFrame;
 
-public class Zeichnung extends Canvas {
+import javax.swing.*;
+
+public class Zeichnung extends JPanel {
 	// Randbereich in %
 	private static final int BORDER_PERCENT = 5;
 	// xmin, xmax, deltax
