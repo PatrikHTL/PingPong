@@ -55,6 +55,7 @@ public class MainFrame extends JFrame implements KeyListener {
 				possibilities,
 				"ham");
 
+		Object selectedValue = s.getValue();
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			FrameInit();
