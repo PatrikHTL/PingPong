@@ -31,7 +31,7 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
 
-public class MainFrame extends JFrame implements KeyListener{
+public class MainFrame extends JFrame implements KeyListener {
 	// Konstanten
 	public static final int _AM = 0;
 	public static final int _FM = 1;
