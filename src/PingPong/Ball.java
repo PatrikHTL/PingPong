@@ -6,21 +6,23 @@ import gui.Zeichnung;
 import java.awt.*;
 
 public class Ball {
-    private double Xcord=100.0;
-    private double Ycord=100.0;
-    private double Xspeed=1.0;
-    private double Yspeed=1.0;
+    private double Xcord=350;
+    private double Ycord=250;
+    private double Xspeed=3.0;
+    private double Yspeed=3.0;
     private MainFrame main;
-    private Zeichnung zeich;
 
     public Ball(MainFrame main) {
         this.main=main;
-        this.zeich=main.zeich;
     }
 
     public void setCord(double xcord, double ycord) {    //Setzen beider Coordinaten (Y,X)
-        Xcord = xcord;                                          //Klasse static weil es nur 1 BaLL Gibt
+        Xcord = xcord;
         Ycord = ycord;
+    }
+    public void resetBall(){
+        Xcord=350;
+        Ycord=250;
     }
 
     public double getXcord() {
@@ -42,19 +44,20 @@ public class Ball {
     public void calcNextPosition(){
         Ycord+=Yspeed;
         Xcord+=Xspeed;
-        zeich.repaint();
+       // main.repaintAll();
     }
 
-    public void BallBounced(){
-        double buffer;
-        buffer=Yspeed;
-        Yspeed=Xspeed;
-        Xspeed=buffer;
+    public void ballBounced(){
+       Yspeed=Yspeed*-1;
     }
 
     public void paintBall(Graphics g) {
         g.setColor(Color.RED);
-        g.drawRect((int)Xcord,(int)Ycord,5,5);
+        g.drawRect((int)Xcord,(int)Ycord,20,20);
 
+    }
+
+    public void ballBouncedX() {
+        Xspeed=Xspeed*-1;
     }
 }

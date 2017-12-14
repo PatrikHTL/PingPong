@@ -13,8 +13,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.security.Key;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollBar;
+import javax.swing.JSplitPane;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.event.MenuEvent;
 //import defauld.MainFrame_2;
 import javax.swing.event.MenuListener;
@@ -22,8 +36,6 @@ import javax.swing.event.MenuListener;
 
 public class MainFrame extends JFrame {
 	// Konstanten
-
-
 	public static final int _AM = 0;
 	public static final int _FM = 1;
 
@@ -31,37 +43,82 @@ public class MainFrame extends JFrame {
 
 	// Menü
 	private JMenuBar menubar;
-	private JMenu menu_datei, menu_mod, menu_hilfe, menu_starten;
+	private JMenu menu_datei, menu_mod, menu_hilfe;
 	private JMenuItem mi_beenden;
 	private JRadioButtonMenuItem rbmi_am, rbmi_fm;
 
-	// Zeichenfeld
+
 	public Zeichnung zeich;
 	private JLabel lb_status;
 	public Schlaeger meinSchlaeger, gegnerSchlaeger;
 	public Ball ball;
+	public Score score;
 
 	// SCrollBars
 	private JPanel sbPanel;
 	private JScrollBar sb1, sb2, sb3;
 
 	public MainFrame() {
-
-        Object[] possibilities = {"Single-Mod", "Multi-Mod", "Multi-Mod online"};
-        String s = (String)JOptionPane.showInputDialog(
-                null,
-                "Which mode would you choose?\n",
-                "Start Game",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                possibilities,
-                "ham");
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			FrameInit();
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
+		Thread zeichen = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					zeich.repaint();
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		zeichen.start();
+
+		Thread moveball=new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(20);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					ball.calcNextPosition();
+					double Xcord = ball.getXcord();
+					double Ycord = ball.getYcord();
+					if (Ycord > 620 || Ycord < 10) {
+						ball.ballBounced();
+					}
+					if (Xcord < meinSchlaeger.getXcord()) {
+						if(ball.getYcord()>meinSchlaeger.getXcord()-50 && ball.getYcord()<meinSchlaeger.getXcord()+50){
+							ball.ballBouncedX();
+						}else {
+							score.incScoreB();
+							ball.resetBall();
+						}
+					} else if (Xcord > gegnerSchlaeger.getXcord()) {
+						if(ball.getYcord()>gegnerSchlaeger.getXcord()-50 && ball.getYcord()<gegnerSchlaeger.getXcord()+50){
+							ball.ballBouncedX();
+						}else {
+							score.incScoreA();
+							ball.resetBall();
+						}
+					}
+				}
+			}
+		});
+		moveball.start();
+	}
+
+	public void repaintAll(){
+
+		zeich.repaint();
 	}
 
 	private void FrameInit() throws Exception {
@@ -102,34 +159,17 @@ public class MainFrame extends JFrame {
 		menu_mod.add(rbmi_fm);
 		menubar.add(menu_mod);
 
-		menu_hilfe = new JMenu("Hilfe");
+		menu_hilfe = new JMenu("Hife");
 		menubar.add(menu_hilfe);
 		menu_hilfe.addMenuListener(new help_menuListener());
 		setJMenuBar(menubar);
 
-		menu_starten = new JMenu("Starten");
-		menubar.add(menu_starten);
-		menu_hilfe.addMenuListener(new start_menuListener());
-		setJMenuBar(menubar);
-
-
-		/*
-		 *  Inhalt Links
-		 */
-
-		// Zeichenfeld
-		//JPanel p_bottom = new JPanel(new BorderLayout());
-        meinSchlaeger = new Schlaeger(this,3);
-        gegnerSchlaeger = new Schlaeger(this, 100);
+        meinSchlaeger = new Schlaeger(this,49);
+        gegnerSchlaeger = new Schlaeger(this, 925);
         ball= new Ball(this);
+		score= new Score(this);
 		zeich = new Zeichnung(this);
-
 		contentPane.add(zeich, java.awt.BorderLayout.CENTER);
-
-
-		/*
-		 *  Statusbar
-		 */
 
 		lb_status = new JLabel("Statuszeile");
 		contentPane.add(lb_status, BorderLayout.SOUTH);
@@ -141,45 +181,11 @@ public class MainFrame extends JFrame {
 		} else if(e.getSource() == rbmi_fm){
 
 		}
-		zeich.repaint();
 	}
 
 	private class b_ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			b_ActionHandler(e);
-		}
-	}
-
-	private class start_menuListener implements MenuListener {
-
-		@Override
-		public void menuSelected(MenuEvent e) {
-			JFrame frame = new JFrame();
-			JPanel panel = new JPanel();
-			JButton singleMod = new JButton("Single-Modus");
-			JButton multiMod = new JButton("Multi-Modus");
-
-			frame.setTitle("Start Game");
-			frame.setSize(500, 200);
-			frame.add(new JLabel("Lets play a Game"));
-
-			singleMod.setVisible(true);
-			multiMod.setVisible(true);
-			panel.add(singleMod);
-			panel.add(multiMod);
-			frame.add(panel);
-			frame.setVisible(true);
-
-	}
-
-		@Override
-		public void menuDeselected(MenuEvent e) {
-
-		}
-
-		@Override
-		public void menuCanceled(MenuEvent e) {
-
 		}
 	}
 
@@ -193,7 +199,7 @@ public class MainFrame extends JFrame {
 			helpJDialog.setSize(500,100);
 			helpJDialog.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
 			helpJDialog.setModal(true);
-			helpJDialog.add(new JLabel("Laden Sie sich die Pro-Version herunter, um die gewünschte Hilfe zu erhalten!"));
+			helpJDialog.add(new JLabel("Bitte lesen Sie die Anleitung oder behalten Sie gefundene Fehler für sich!"));
 			helpJDialog.setVisible(true);
 		}
 
