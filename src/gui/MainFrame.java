@@ -26,10 +26,8 @@ public class MainFrame extends JFrame{
 	private JPanel contentPane;
 
 	// Menü
-	private JMenuBar menubar;
-	private JMenu menu_datei, menu_mod, menu_hilfe;
 	private JMenuItem mi_beenden;
-	private JRadioButtonMenuItem rbmi_am, rbmi_fm;
+
 
 
 	public Zeichnung zeich;
@@ -168,38 +166,6 @@ public class MainFrame extends JFrame{
 		 *  Menü
 		 */
 
-		menubar = new JMenuBar();
-
-		menu_datei = new JMenu("Datei");
-		menu_datei.getPopupMenu().setLightWeightPopupEnabled(false);
-		mi_beenden = new JMenuItem("Beenden");
-		mi_beenden.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		menu_datei.add(mi_beenden);
-		menubar.add(menu_datei);
-
-		menu_mod = new JMenu("Modus");
-		menu_mod.getPopupMenu().setLightWeightPopupEnabled(false);
-		rbmi_am = new JRadioButtonMenuItem("Single-Mod");
-		rbmi_am.addActionListener(new b_ActionListener());
-		rbmi_am.setSelected(true);
-		rbmi_fm = new JRadioButtonMenuItem("Multiplayer-Mod");
-		rbmi_fm.addActionListener(new b_ActionListener());
-		ButtonGroup btngrp = new ButtonGroup();
-		btngrp.add(rbmi_am);
-		btngrp.add(rbmi_fm);
-		menu_mod.add(rbmi_am);
-		menu_mod.add(rbmi_fm);
-		menubar.add(menu_mod);
-
-		menu_hilfe = new JMenu("Hife");
-		menubar.add(menu_hilfe);
-		menu_hilfe.addMenuListener(new help_menuListener());
-		setJMenuBar(menubar);
 
         meinSchlaeger = new Schlaeger(this,50);
         gegnerSchlaeger = new Schlaeger(this, 930);
@@ -212,19 +178,7 @@ public class MainFrame extends JFrame{
 		contentPane.add(lb_status, BorderLayout.SOUTH);
 	}
 
-	public void b_ActionHandler(ActionEvent e) {
-		if (e.getSource() == rbmi_am) {
 
-		} else if(e.getSource() == rbmi_fm){
-
-		}
-	}
-
-	private class b_ActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			b_ActionHandler(e);
-		}
-	}
 
 	private class help_menuListener implements MenuListener {
 
