@@ -153,8 +153,8 @@ public class MainFrame extends JFrame {
 		menu_hilfe.addMenuListener(new help_menuListener());
 		setJMenuBar(menubar);
 
-        meinSchlaeger = new Schlaeger(this,49);
-        gegnerSchlaeger = new Schlaeger(this, 925);
+        meinSchlaeger = new Schlaeger(this,50);
+        gegnerSchlaeger = new Schlaeger(this, 930);
         ball= new Ball(this);
 		score= new Score(this);
 		zeich = new Zeichnung(this);
