@@ -9,6 +9,9 @@ public class Application {
      * Construct and show the application.
      */
     public Application() {
+
+
+
         MainFrame frame = new MainFrame();
         // Validate frames that have preset sizes
         frame.validate();
