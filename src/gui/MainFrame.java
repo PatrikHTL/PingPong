@@ -39,6 +39,11 @@ public class MainFrame extends JFrame{
 	private boolean wPressed;
 	private boolean sPressed;
 	private String s;
+	private double schlaegerspeed=5;
+	private boolean up;
+	private boolean down;
+	private boolean upgegner;
+	private boolean downgegner;
 
 	public MainFrame() {
 
@@ -72,7 +77,7 @@ public class MainFrame extends JFrame{
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(20);
+						Thread.sleep(10);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -82,22 +87,55 @@ public class MainFrame extends JFrame{
 					if (Ycord > 620 || Ycord < 36) {
 						ball.ballBounced();
 					}
-					if (Xcord < meinSchlaeger.getXcord()+20) {
-						if(Ycord>meinSchlaeger.getYcord() && Ycord<meinSchlaeger.getYcord()+100){
+					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Ycord>meinSchlaeger.getYcord()-schlaegerspeed && Ycord<meinSchlaeger.getYcord()+100-schlaegerspeed)) {
 							ball.ballBouncedX();
-						}else {
-							score.incScoreB();
-							ball.resetBall();
+					}else if(ball.getXcord()<= meinSchlaeger.getXcord()-20){
+						score.incScoreB();
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
 						}
-					} else if (Xcord > gegnerSchlaeger.getXcord()-20) {
-						if(Ycord>gegnerSchlaeger.getYcord()&& Ycord<gegnerSchlaeger.getYcord()+100){
-							ball.ballBouncedX();
-						}else {
-							score.incScoreA();
-							ball.resetBall();
+						ball.resetBall();
+						try {
+							Thread.sleep(500);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
 						}
 					}
+
+					if ((Xcord > gegnerSchlaeger.getXcord()-20)&&(Ycord>gegnerSchlaeger.getYcord()-schlaegerspeed && Ycord<gegnerSchlaeger.getYcord()+100-schlaegerspeed)) {
+						ball.ballBouncedX();
+					}else if(ball.getXcord()>= gegnerSchlaeger.getXcord()+20){
+							score.incScoreA();
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						ball.resetBall();
+						try {
+							Thread.sleep(500);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+
+					if(up==true && meinSchlaeger.getYcord() <=515){
+						meinSchlaeger.setYcord(meinSchlaeger.getYcord()+schlaegerspeed);
+					}
+
+					if(upgegner==true && gegnerSchlaeger.getYcord() <=515 && s.equals("Multi-Player")){
+						gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+schlaegerspeed);
+					}
+					if(down==true && meinSchlaeger.getYcord()>=11){
+						meinSchlaeger.setYcord(meinSchlaeger.getYcord()-schlaegerspeed);
+					}
+					if(downgegner==true && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Player")){
+						gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-schlaegerspeed);
+					}
 				}
+
 			}
 		});
 		moveball.start();
@@ -124,44 +162,82 @@ public class MainFrame extends JFrame{
 
 				int key = e.getKeyCode();
 
-				if (key == KeyEvent.VK_LEFT && meinSchlaeger.getYcord()>=11  ) {
-					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				if (key == KeyEvent.VK_LEFT) {
+					down=true;
+					}
+
+				if (key == KeyEvent.VK_RIGHT) {
+					up=true;
 				}
 
-				if (key == KeyEvent.VK_RIGHT && meinSchlaeger.getYcord()<=515) {
-					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				if (key == KeyEvent.VK_UP) {
+					up=true;
 				}
 
-				if (key == KeyEvent.VK_UP  && meinSchlaeger.getYcord()>=11 ) {
-					meinSchlaeger.setYcord(meinSchlaeger.getYcord()-5);
+				if (key == KeyEvent.VK_DOWN) {
+					down=true;
 				}
 
-				if (key == KeyEvent.VK_DOWN && meinSchlaeger.getYcord()<=515) {
-					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
+				if (key == KeyEvent.VK_W) {
+					upgegner=true;
 				}
 
-				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Player")) {
-					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				if (key == KeyEvent.VK_S) {
+					downgegner=true;
 				}
 
-				if (key == KeyEvent.VK_S && gegnerSchlaeger.getYcord()<=515 && s.equals("Multi-Player")) {
-					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
+				if (key == KeyEvent.VK_A) {
+					upgegner=true;
 				}
 
-				if (key == KeyEvent.VK_A  && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Player")) {
-					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
+				if (key == KeyEvent.VK_D) {
+					downgegner=true;
 				}
 
-				if (key == KeyEvent.VK_D && gegnerSchlaeger.getYcord()<=515 && s.equals("Multi-Player")) {
-					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
-				}
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
 
+				int key = e.getKeyCode();
+
+				if (key == KeyEvent.VK_LEFT) {
+					down=false;
+				}
+
+				if (key == KeyEvent.VK_RIGHT) {
+					up=false;
+				}
+
+				if (key == KeyEvent.VK_UP) {
+					up=false;
+				}
+
+				if (key == KeyEvent.VK_DOWN) {
+					down=false;
+				}
+
+				if (key == KeyEvent.VK_W) {
+					upgegner=false;
+				}
+
+				if (key == KeyEvent.VK_S) {
+					downgegner=false;
+				}
+
+				if (key == KeyEvent.VK_A) {
+					upgegner=false;
+				}
+
+				if (key == KeyEvent.VK_D) {
+					downgegner=false;
+				}
+
 			}
+
 		});
+
+
 
 		setSize(new Dimension(1000, 700));
 		setTitle("PingPong");
@@ -178,7 +254,7 @@ public class MainFrame extends JFrame{
 		zeich = new Zeichnung(this);
 		contentPane.add(zeich, java.awt.BorderLayout.CENTER);
 
-		lb_status = new JLabel("Statuszeile");
+		lb_status = new JLabel(s);
 		contentPane.add(lb_status, BorderLayout.SOUTH);
 	}
 
