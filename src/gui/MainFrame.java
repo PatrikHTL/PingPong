@@ -43,7 +43,7 @@ public class MainFrame extends JFrame{
 
 	public MainFrame() {
 
-		Object[] possibilities = {"Single-Mod", "Multi-Mod", "Multi-Mod online"};
+		Object[] possibilities = {"Single-Player", "Multi-Player", "Network"};
 		s = (String) JOptionPane.showInputDialog(
 				null,
 				"Which mode would you choose?\n",
@@ -127,7 +127,7 @@ public class MainFrame extends JFrame{
 			}
 		});
 		moveball.start();
-		if(s.equals("Single-Mod")) {
+		if(s.equals("Single-Player")) {
 			new Bot(MainFrame.this);
 		}
 	}
@@ -166,19 +166,19 @@ public class MainFrame extends JFrame{
 					meinSchlaeger.setYcord(meinSchlaeger.getYcord()+5);
 				}
 
-				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Mod")) {
+				if (key == KeyEvent.VK_W && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Player")) {
 					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
 				}
 
-				if (key == KeyEvent.VK_S && gegnerSchlaeger.getYcord()<=515 && s.equals("Multi-Mod")) {
+				if (key == KeyEvent.VK_S && gegnerSchlaeger.getYcord()<=515 && s.equals("Multi-Player")) {
 					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
 				}
 
-				if (key == KeyEvent.VK_A  && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Mod")) {
+				if (key == KeyEvent.VK_A  && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Player")) {
 					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-5);
 				}
 
-				if (key == KeyEvent.VK_D && gegnerSchlaeger.getYcord()<=515 && s.equals("Multi-Mod")) {
+				if (key == KeyEvent.VK_D && gegnerSchlaeger.getYcord()<=515 && s.equals("Multi-Player")) {
 					gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+5);
 				}
 			}
