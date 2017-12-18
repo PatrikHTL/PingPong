@@ -13,7 +13,7 @@ public class Schlaeger {
     public Schlaeger(MainFrame main, double Xcord) {    //Constructer weil 2 Schläger existieren
         this.main=main;
         this.Xcord=Xcord;
-        Ycord=250;
+        Ycord=300;
     }
 
     public void setYcord(double ycord){
