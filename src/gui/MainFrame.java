@@ -149,17 +149,17 @@ public class MainFrame extends JFrame{
 						}
 					}
 
-					if(up==true && meinSchlaeger.getYcord() <=515){
+					if(down==true && meinSchlaeger.getYcord() <=515){
 						meinSchlaeger.setYcord(meinSchlaeger.getYcord()+schlaegerspeed);
 					}
 
-					if(upgegner==true && gegnerSchlaeger.getYcord() <=515 && s.equals("Multi-Player")){
+					if(downgegner==true && gegnerSchlaeger.getYcord() <=515 && s.equals("Multi-Player")){
 						gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()+schlaegerspeed);
 					}
-					if(down==true && meinSchlaeger.getYcord()>=11){
+					if(up==true && meinSchlaeger.getYcord()>=11){
 						meinSchlaeger.setYcord(meinSchlaeger.getYcord()-schlaegerspeed);
 					}
-					if(downgegner==true && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Player")){
+					if(upgegner==true && gegnerSchlaeger.getYcord()>=11 && s.equals("Multi-Player")){
 						gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-schlaegerspeed);
 					}
 				}
@@ -190,11 +190,11 @@ public class MainFrame extends JFrame{
 				int key = e.getKeyCode();
 
 				if (key == KeyEvent.VK_LEFT) {
-					down=true;
-					}
+				    up=true;
+				}
 
 				if (key == KeyEvent.VK_RIGHT) {
-					up=true;
+					down=true;
 				}
 
 				if (key == KeyEvent.VK_UP) {
@@ -228,11 +228,11 @@ public class MainFrame extends JFrame{
 				int key = e.getKeyCode();
 
 				if (key == KeyEvent.VK_LEFT) {
-					down=false;
+					up=false;
 				}
 
 				if (key == KeyEvent.VK_RIGHT) {
-					up=false;
+					down=false;
 				}
 
 				if (key == KeyEvent.VK_UP) {
