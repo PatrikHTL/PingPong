@@ -39,6 +39,7 @@ public class MainFrame extends JFrame{
 	private boolean wPressed;
 	private boolean sPressed;
 	private String s;
+	private String n;
 
 	public MainFrame() {
 
@@ -50,7 +51,32 @@ public class MainFrame extends JFrame{
 				JOptionPane.PLAIN_MESSAGE,
 				null,
 				possibilities,
-				"ham");
+				"Single-Mod");
+
+				if(s.equals("Multi-Mod online")) {
+
+					JTextField online = new JTextField();
+					JTextField ip = new JTextField();
+					Object[] possibilities1 = {"Server", "Client"};
+					Object[] message1 = {"IP-Adresse", ip};
+
+					n = (String) JOptionPane.showInputDialog(
+							null,
+							"Server/Client \n",
+							"Login",
+							JOptionPane.PLAIN_MESSAGE,
+							null,
+							possibilities1,
+							"Single-Mod");
+					// Bei Client soll das 3. Fenster, sprich ip adresse aufgerufen werden
+
+					if (n.equals("Client")) {
+						JOptionPane pane = new JOptionPane(message1,
+								JOptionPane.PLAIN_MESSAGE,
+								JOptionPane.DEFAULT_OPTION);
+						pane.createDialog(null, "Login").setVisible(true);
+					}
+				}
 
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
