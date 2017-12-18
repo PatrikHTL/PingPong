@@ -5,6 +5,7 @@ import gui.MainFrame;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -25,7 +26,10 @@ public class Server {
         this.gegnerSchläger=main.gegnerSchlaeger;
         try {
             server = new ServerSocket(46893);
+            System.out.println("Awaiting Connection...");
+            System.out.println("Your IP: "+ InetAddress.getLocalHost().getHostAddress());
             client = server.accept();
+
             outStream = new ObjectOutputStream(client.getOutputStream());
             inStream = new ObjectInputStream(client.getInputStream());
             refresh.start();
