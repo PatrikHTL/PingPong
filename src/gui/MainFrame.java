@@ -115,7 +115,7 @@ public class MainFrame extends JFrame{
 					if (Ycord > 620 || Ycord < 36) {
 						ball.ballBounced();
 					}
-					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Ycord>meinSchlaeger.getYcord()-schlaegerspeed && Ycord<meinSchlaeger.getYcord()+100-schlaegerspeed)) {
+					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Xcord > meinSchlaeger.getXcord()+15)&& (Ycord>meinSchlaeger.getYcord()-schlaegerspeed && Ycord<meinSchlaeger.getYcord()+100-schlaegerspeed)) {
 							ball.ballBouncedX();
 					}else if(ball.getXcord()<= meinSchlaeger.getXcord()-20){
 						score.incScoreB();
@@ -132,9 +132,10 @@ public class MainFrame extends JFrame{
 						}
 					}
 
-					if ((Xcord > gegnerSchlaeger.getXcord()-20)&&(Ycord>gegnerSchlaeger.getYcord()-schlaegerspeed && Ycord<gegnerSchlaeger.getYcord()+100-schlaegerspeed)) {
+					if ((Xcord > gegnerSchlaeger.getXcord()-20)&& (Xcord > gegnerSchlaeger.getXcord()-15)&& (Ycord>gegnerSchlaeger.getYcord()-schlaegerspeed && Ycord<gegnerSchlaeger.getYcord()+100-schlaegerspeed)) {
 						ball.ballBouncedX();
-					}else if(ball.getXcord()>= gegnerSchlaeger.getXcord()+20){
+					}
+					else if(ball.getXcord()>= gegnerSchlaeger.getXcord()+20){
 							score.incScoreA();
 						try {
 							Thread.sleep(1000);
