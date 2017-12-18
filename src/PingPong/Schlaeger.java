@@ -8,6 +8,7 @@ import java.awt.*;
 public class Schlaeger {
     private final double Xcord;
     private double Ycord;
+    private double Yspeed;
     private MainFrame main;
 
     public Schlaeger(MainFrame main, double Xcord) {    //Constructer weil 2 Schläger existieren
@@ -16,7 +17,9 @@ public class Schlaeger {
         Ycord=300;
     }
 
+
     public void setYcord(double ycord){
+        Yspeed=-(Ycord-ycord);
         Ycord=ycord;
     }
 
@@ -31,5 +34,9 @@ public class Schlaeger {
     public void paintSchlaeger(Graphics g){
         g.setColor(Color.GREEN);
         g.drawRect((int)Xcord, (int)Ycord, 20, 100);
+    }
+
+    public double getYspeed(){
+        return Yspeed;
     }
 }
