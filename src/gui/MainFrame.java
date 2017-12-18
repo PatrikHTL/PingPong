@@ -1,8 +1,6 @@
 package gui;
 
-import PingPong.Ball;
-import PingPong.Bot;
-import PingPong.Schlaeger;
+import PingPong.*;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -44,6 +42,7 @@ public class MainFrame extends JFrame{
 	private boolean down;
 	private boolean upgegner;
 	private boolean downgegner;
+	private String n;
 
 	public MainFrame() {
 
@@ -55,7 +54,36 @@ public class MainFrame extends JFrame{
 				JOptionPane.PLAIN_MESSAGE,
 				null,
 				possibilities,
-				"ham");
+				"Single-Player");
+
+				if(s.equals("Network")) {
+
+					JTextField online = new JTextField();
+					JTextField ip = new JTextField();
+					Object[] possibilities1 = {"Server", "Client"};
+					Object[] message1 = {"IP-Adresse", ip};
+
+					n = (String) JOptionPane.showInputDialog(
+							null,
+							"Server/Client \n",
+							"Login",
+							JOptionPane.PLAIN_MESSAGE,
+							null,
+							possibilities1,
+							"Single-Player");
+					// Bei Client soll das 3. Fenster, sprich ip adresse aufgerufen werden
+
+					if (n.equals("Client")) {
+						JOptionPane pane = new JOptionPane(message1,
+								JOptionPane.PLAIN_MESSAGE,
+								JOptionPane.DEFAULT_OPTION);
+						pane.createDialog(null, "Login").setVisible(true);
+						new Client(MainFrame.this, message1.toString());
+					}
+					else{
+						new Server(MainFrame.this);
+					}
+				}
 
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -135,7 +163,6 @@ public class MainFrame extends JFrame{
 						gegnerSchlaeger.setYcord(gegnerSchlaeger.getYcord()-schlaegerspeed);
 					}
 				}
-
 			}
 		});
 		moveball.start();
@@ -193,7 +220,6 @@ public class MainFrame extends JFrame{
 				if (key == KeyEvent.VK_D) {
 					downgegner=true;
 				}
-
 			}
 
 			@Override
@@ -234,10 +260,7 @@ public class MainFrame extends JFrame{
 				}
 
 			}
-
 		});
-
-
 
 		setSize(new Dimension(1000, 700));
 		setTitle("PingPong");

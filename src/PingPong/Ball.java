@@ -21,6 +21,10 @@ public class Ball {
         Xcord = xcord;
         Ycord = ycord;
     }
+    public void setSpeed(double Xspeed, double Yspeed) {    //Setzen beider Coordinaten (Y,X)
+        this.Xspeed = Xspeed;
+        this.Yspeed = Yspeed;
+    }
     public void resetBall(){
         Xcord=450;
         Ycord=350;
