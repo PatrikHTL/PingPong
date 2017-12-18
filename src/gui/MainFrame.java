@@ -53,7 +53,7 @@ public class MainFrame extends JFrame{
 				possibilities,
 				"Single-Mod");
 
-				if(s.equals("Multi-Mod online")) {
+				if(s.equals("Network")) {
 
 					JTextField online = new JTextField();
 					JTextField ip = new JTextField();
