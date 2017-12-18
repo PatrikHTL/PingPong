@@ -17,6 +17,7 @@ public class Schlaeger {
         Ycord=300;
     }
 
+
     public void setYcord(double ycord){
         Yspeed=-(Ycord-ycord);
         Ycord=ycord;
