@@ -19,6 +19,7 @@ public class Server {
     private Schlaeger gegnerSchläger;
 
     public Server(MainFrame main) {
+
         this.main=main;
         this.ball=main.ball;
         this.meinSchläger=main.meinSchlaeger;
