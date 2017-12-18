@@ -33,7 +33,7 @@ public class Schlaeger {
 
     public void paintSchlaeger(Graphics g){
         g.setColor(Color.GREEN);
-        g.drawRect((int)Xcord, (int)Ycord, 20, 100);
+        g.fillRect((int)Xcord, (int)Ycord, 20, 100);
     }
 
     public double getYspeed(){
