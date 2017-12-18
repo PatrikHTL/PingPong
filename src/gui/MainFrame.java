@@ -1,8 +1,6 @@
 package gui;
 
-import PingPong.Ball;
-import PingPong.Bot;
-import PingPong.Schlaeger;
+import PingPong.*;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -51,7 +49,7 @@ public class MainFrame extends JFrame{
 				JOptionPane.PLAIN_MESSAGE,
 				null,
 				possibilities,
-				"Single-Mod");
+				"Single-Player");
 
 				if(s.equals("Network")) {
 
@@ -67,7 +65,7 @@ public class MainFrame extends JFrame{
 							JOptionPane.PLAIN_MESSAGE,
 							null,
 							possibilities1,
-							"Single-Mod");
+							"Single-Player");
 					// Bei Client soll das 3. Fenster, sprich ip adresse aufgerufen werden
 
 					if (n.equals("Client")) {
@@ -75,6 +73,10 @@ public class MainFrame extends JFrame{
 								JOptionPane.PLAIN_MESSAGE,
 								JOptionPane.DEFAULT_OPTION);
 						pane.createDialog(null, "Login").setVisible(true);
+						new Client(MainFrame.this, message1.toString());
+					}
+					else{
+						new Server(MainFrame.this);
 					}
 				}
 
