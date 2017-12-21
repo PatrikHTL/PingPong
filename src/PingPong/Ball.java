@@ -28,8 +28,8 @@ public class Ball {
     public void resetBall(){
         Xcord=450;
         Ycord=350;
-        Yspeed=3.0;
-        Xspeed=3.0;
+        Yspeed=3;
+        Xspeed=3;
     }
 
     public double getXcord() {
@@ -63,7 +63,8 @@ public class Ball {
 
     public void paintBall(Graphics g) {
         g.setColor(Color.RED);
-        g.drawOval((int)Xcord,(int)Ycord,20,20);
+        g.fillOval((int)Xcord,(int)Ycord,20,20);
+
 
     }
 
