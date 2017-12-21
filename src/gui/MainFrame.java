@@ -49,7 +49,7 @@ public class MainFrame extends JFrame{
 		Object[] possibilities = {"Single-Player", "Multi-Player", "Network"};
 		s = (String) JOptionPane.showInputDialog(
 				null,
-				"Which mode would you choose?\n",
+				"Which mode would you like to choose?\n",
 				"Start Game",
 				JOptionPane.PLAIN_MESSAGE,
 				null,
