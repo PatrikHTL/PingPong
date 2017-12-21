@@ -43,14 +43,15 @@ public class Client {
                     ball.setSpeed(Double.parseDouble(cords[3]),Double.parseDouble(cords[4]));
 
                     outStream.writeObject(meinSchläger.getYcord());
+
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
                     try {
                         server.close();
                     } catch (IOException e1) {
                         e1.printStackTrace();
                         System.out.println("Failed to Close Server!!!");
                     }
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             }}});
 }
