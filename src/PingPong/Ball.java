@@ -28,8 +28,8 @@ public class Ball {
     public void resetBall(){
         Xcord=450;
         Ycord=350;
-        Yspeed=3.0;
-        Xspeed=3.0;
+        Yspeed=3;
+        Xspeed=3;
     }
 
     public double getXcord() {

@@ -4,17 +4,9 @@ import PingPong.*;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.GridLayout;
-//import defauld.Zeichnung_2;
 import java.awt.event.*;
-import java.security.Key;
 
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-//import defauld.MainFrame_2;
-import javax.swing.event.MenuListener;
 
 
 public class MainFrame extends JFrame{
@@ -43,6 +35,7 @@ public class MainFrame extends JFrame{
 	private boolean upgegner;
 	private boolean downgegner;
 	private String n;
+	private int level;
 
 	public MainFrame() {
 
@@ -55,6 +48,7 @@ public class MainFrame extends JFrame{
 				null,
 				possibilities,
 				"Single-Player");
+
 
 				if(s.equals("Network")) {
 
@@ -85,12 +79,46 @@ public class MainFrame extends JFrame{
 					}
 				}
 
+		if(s.equals("Single-Player")) {
+
+			JTextField text = new JTextField();
+			Object[] possibilities1levels = {"Noob", "Beginner", "Tryhard", "Advanced", "Pro", "God"};
+			Object[] message1 = {"Level", text};
+
+			n = (String) JOptionPane.showInputDialog(
+					null,
+					"Choose your Level, young Padawan \n",
+					"Level",
+					JOptionPane.PLAIN_MESSAGE,
+					null,
+					possibilities1levels,
+					"Single-Player");
+
+			switch (n){
+				case "Noob": 	level=10;
+								break;
+				case "Beginner": 	level=10;
+					break;
+				case "Tryhard": 	level=50;
+					break;
+				case "Advanced": 	level=70;
+					break;
+				case "Pro": 		level=90;
+					break;
+				case "God": 		level=97;
+					break;
+
+
+			}
+		}
+
 		try {
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			FrameInit();
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
+
 		Thread zeichen = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -115,7 +143,7 @@ public class MainFrame extends JFrame{
 					if (Ycord > 620 || Ycord < 36) {
 						ball.ballBounced();
 					}
-					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Xcord > meinSchlaeger.getXcord()+15)&& (Ycord>meinSchlaeger.getYcord()-schlaegerspeed && Ycord<meinSchlaeger.getYcord()+100-schlaegerspeed)) {
+					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Xcord > meinSchlaeger.getXcord()+15)&& (Ycord>meinSchlaeger.getYcord()&& Ycord<meinSchlaeger.getYcord()+100)) {
 							ball.ballBouncedX();
 					}else if(ball.getXcord()<= meinSchlaeger.getXcord()-20){
 						score.incScoreB();
@@ -132,7 +160,7 @@ public class MainFrame extends JFrame{
 						}
 					}
 
-					if ((Xcord > gegnerSchlaeger.getXcord()-20)&& (Xcord > gegnerSchlaeger.getXcord()-15)&& (Ycord>gegnerSchlaeger.getYcord()-schlaegerspeed && Ycord<gegnerSchlaeger.getYcord()+100-schlaegerspeed)) {
+					if ((Xcord > gegnerSchlaeger.getXcord()-20)&& (Xcord > gegnerSchlaeger.getXcord()-15)&& (Ycord>gegnerSchlaeger.getYcord() && Ycord<gegnerSchlaeger.getYcord()+100)) {
 						ball.ballBouncedX();
 					}
 					else if(ball.getXcord()>= gegnerSchlaeger.getXcord()+20){
@@ -168,7 +196,7 @@ public class MainFrame extends JFrame{
 		});
 		moveball.start();
 		if(s.equals("Single-Player")) {
-			new Bot(MainFrame.this);
+			new Bot(MainFrame.this,level);
 		}
 	}
 
@@ -280,34 +308,5 @@ public class MainFrame extends JFrame{
 
 		lb_status = new JLabel(s);
 		contentPane.add(lb_status, BorderLayout.SOUTH);
-	}
-
-
-
-	private class help_menuListener implements MenuListener {
-
-		@Override
-		public void menuSelected(MenuEvent e) {
-
-			JDialog helpJDialog = new JDialog();
-			helpJDialog.setTitle("Hilfe");
-			helpJDialog.setSize(500,100);
-			helpJDialog.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
-			helpJDialog.setModal(true);
-			helpJDialog.add(new JLabel("Bitte lesen Sie die Anleitung oder behalten Sie gefundene Fehler für sich!"));
-			helpJDialog.setVisible(true);
-		}
-
-		@Override
-		public void menuDeselected(MenuEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void menuCanceled(MenuEvent e) {
-			// TODO Auto-generated method stub
-
-		}
 	}
 }
