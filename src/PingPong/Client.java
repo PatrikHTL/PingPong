@@ -38,9 +38,9 @@ public class Client {
                 try {
                     String got=(String)inStream.readObject();
                     String[] cords = got.split(";");
-                    gegnerSchläger.setYcord(Double.parseDouble(cords[0]));
-                    ball.setCord(Double.parseDouble(cords[1]),Double.parseDouble(cords[2]));
-                    ball.setSpeed(Double.parseDouble(cords[3]),Double.parseDouble(cords[4]));
+                    gegnerSchläger.setYcord(530-Double.parseDouble(cords[0]));
+                    ball.setCord(900-Double.parseDouble(cords[1]),610-Double.parseDouble(cords[2]));
+                    ball.setSpeed(-Double.parseDouble(cords[3]),-Double.parseDouble(cords[4]));
 
                     outStream.writeObject(meinSchläger.getYcord());
 
