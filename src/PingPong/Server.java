@@ -45,8 +45,7 @@ public class Server {
                 try {
                     outStream.writeObject(meinSchläger.getYcord() + ";" + ball.getXcord() + ";" + ball.getYcord() + ";" + ball.getXspeed() + ";" + ball.getYspeed());
 
-                    String got=(String)inStream.readObject();
-                    gegnerSchläger.setYcord(Double.parseDouble(got));
+                    gegnerSchläger.setYcord((double)inStream.readObject());
                     try {
                         server.close();
                     } catch (IOException e1) {

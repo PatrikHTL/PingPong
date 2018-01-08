@@ -39,6 +39,13 @@ public class MainFrame extends JFrame{
 
 	public MainFrame() {
 
+		try {
+			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			FrameInit();
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+
 		Object[] possibilities = {"Single-Player", "Multi-Player", "Network"};
 		s = (String) JOptionPane.showInputDialog(
 				null,
@@ -68,11 +75,8 @@ public class MainFrame extends JFrame{
 					// Bei Client soll das 3. Fenster, sprich ip adresse aufgerufen werden
 
 					if (n.equals("Client")) {
-						JOptionPane pane = new JOptionPane(message1,
-								JOptionPane.PLAIN_MESSAGE,
-								JOptionPane.DEFAULT_OPTION);
-						pane.createDialog(null, "Login").setVisible(true);
-						new Client(MainFrame.this, message1.toString());
+						String name = JOptionPane.showInputDialog(null, "Enter IP Adress:", "Connect", JOptionPane.PLAIN_MESSAGE);
+						new Client(MainFrame.this, name);
 					}
 					else{
 						new Server(MainFrame.this);
@@ -96,7 +100,7 @@ public class MainFrame extends JFrame{
 
 			switch (n){
 				case "Noob": 	level=10;
-								break;
+					break;
 				case "Beginner": 	level=10;
 					break;
 				case "Tryhard": 	level=50;
@@ -110,13 +114,6 @@ public class MainFrame extends JFrame{
 
 
 			}
-		}
-
-		try {
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			FrameInit();
-		} catch (Exception exception) {
-			exception.printStackTrace();
 		}
 
 		Thread zeichen = new Thread(new Runnable() {
