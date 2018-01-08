@@ -39,7 +39,7 @@ public class Zeichnung extends JPanel {
         lock.lock();
         double xval, yval;
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawLine(50,10,950,10);
         g.drawLine(50,620,950,620);
         g.drawLine(50,10,50,620);
