@@ -25,7 +25,7 @@ public class Zeichnung extends JPanel {
 	public Zeichnung(MainFrame mainFrame) {
 		super();
 		this.fr = mainFrame;
-		setBackground(Color.WHITE);
+		setBackground(Color.BLACK);
 		this.meinSchlaeger=mainFrame.meinSchlaeger;
 		this.gegnerSchlaeger=mainFrame.gegnerSchlaeger;
 		this.ball=mainFrame.ball;
