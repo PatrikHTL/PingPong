@@ -43,7 +43,7 @@ public class Client {                       //Diese Klasse verwaltet die Socket 
                     String got=(String)inStream.readObject();                                   //Wartet auf Koordinaten des Servers
                     String[] cords = got.split(";");
                     gegnerSchläger.setYcord(Double.parseDouble(cords[0]));      //530
-                    ball.setCord(900-Double.parseDouble(cords[1]),Double.parseDouble(cords[2])); //610
+                    ball.setCord(950-Double.parseDouble(cords[1]),Double.parseDouble(cords[2])); //950- um Spielfeld zu "spiegeln"
                     ball.setSpeed(-Double.parseDouble(cords[3]),Double.parseDouble(cords[4]));  //Aktualisiert entsprechen die Positionen
                     score.setScoreB(Integer.parseInt(cords[5]));
                     score.setScoreA(Integer.parseInt(cords[6]));
