@@ -7,7 +7,7 @@ import gui.Zeichnung;
 import java.awt.*;
 
 
-public class Score {
+public class Score {                    //Diese Klasse ist für die Anzeige des der Scores zuständig
     private MainFrame main;
     private int scoreA=0;
     private int scoreB=0;

@@ -9,7 +9,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class Server {                                       //Diese KLasse verwaltet die Socketverbindung als Server
     private Socket client;
     private ServerSocket server;
     private ObjectOutputStream outStream;
@@ -27,12 +27,12 @@ public class Server {
         try {
             server = new ServerSocket(46893);
             System.out.println("Awaiting Connection...");
-            System.out.println("Your IP: "+ InetAddress.getLocalHost().getHostAddress());
+            System.out.println("Your IP: "+ InetAddress.getLocalHost().getHostAddress());   //Gibt eigene IP in Konsole aus
             client = server.accept();
 
             outStream = new ObjectOutputStream(client.getOutputStream());
             inStream = new ObjectInputStream(client.getInputStream());
-            refresh.start();
+            refresh.start();                                                                //Startet Serverthread
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,10 +41,10 @@ public class Server {
         @Override
         public void run() {
             while (client.isConnected()) {
-                try {
+                try {           //Server sendet in rägelmäßigen abständen die Koordinaten um Server und Client zu syncronisieren
                     outStream.writeObject(meinSchläger.getYcord() + ";" + ball.getXcord() + ";" + ball.getYcord() + ";" + ball.getXspeed() + ";" + ball.getYspeed());
 
-                    gegnerSchläger.setYcord((double)inStream.readObject());
+                    gegnerSchläger.setYcord((double)inStream.readObject());     //Aktualisiert die position des Gegners (Antwort des Clients)
                     try {
                         server.close();
                     } catch (IOException e1) {
@@ -55,7 +55,7 @@ public class Server {
                     e.printStackTrace();
                 }
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

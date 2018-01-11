@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class Client {
+public class Client {                       //Diese Klasse verwaltet die Socket Verbindung als Client
     private Socket server;
     private ObjectOutputStream outStream;
     private ObjectInputStream inStream;
@@ -25,10 +25,11 @@ public class Client {
             server = new Socket(ip, 46893);
             outStream = new ObjectOutputStream(server.getOutputStream());
             inStream = new ObjectInputStream(server.getInputStream());
-            refresh.start();
+            refresh.start();                                                    //Nach erfolgreichem Verbindungsaufbau startet der Listener
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to Connect!!!");
+
         }
     }
     Thread refresh = new Thread(new Runnable() {
@@ -36,13 +37,13 @@ public class Client {
         public void run() {
             while (server.isConnected()) {
                 try {
-                    String got=(String)inStream.readObject();
+                    String got=(String)inStream.readObject();                                   //Wartet auf Koordinaten des Servers
                     String[] cords = got.split(";");
                     gegnerSchläger.setYcord(Double.parseDouble(cords[0]));      //530
                     ball.setCord(900-Double.parseDouble(cords[1]),Double.parseDouble(cords[2])); //610
-                    ball.setSpeed(-Double.parseDouble(cords[3]),Double.parseDouble(cords[4]));
+                    ball.setSpeed(-Double.parseDouble(cords[3]),Double.parseDouble(cords[4]));  //Aktualisiert entsprechen die Positionen
 
-                    outStream.writeObject(meinSchläger.getYcord());
+                    outStream.writeObject(meinSchläger.getYcord());                             //Und antwortet mit der Schlägerposition
 
                 } catch (IOException | ClassNotFoundException e) {
                     e.printStackTrace();

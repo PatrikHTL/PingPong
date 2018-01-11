@@ -5,7 +5,7 @@ import gui.Zeichnung;
 
 import java.awt.*;
 
-public class Ball {
+public class Ball {                            //Diese KLasse ist zum berechnen und darstellen des Balles zuständig
     private double Xcord=350;
     private double Ycord=250;
     private double Xspeed=3.0;
@@ -25,7 +25,7 @@ public class Ball {
         this.Xspeed = Xspeed;
         this.Yspeed = Yspeed;
     }
-    public void resetBall(){
+    public void resetBall(){        //Zurücksetzen des Balles ca in die Mitte des Spielfeldes
         Xcord=450;
         Ycord=350;
         Yspeed=3;
@@ -34,7 +34,7 @@ public class Ball {
 
     public double getXcord() {
         return Xcord;
-    }
+    }       //Getter zum abrufen der Koordinaten
 
     public double getYcord() {
         return Ycord;
@@ -48,16 +48,16 @@ public class Ball {
         return Yspeed;
     }
 
-    public void calcNextPosition(){
+    public void calcNextPosition(){                 //Neue Position errechnen
 
         schlaegerspeed=main.meinSchlaeger.getYspeed();
-        Ycord+=Yspeed;
+        Ycord+=Yspeed;                              //Dazu wird nur die Ballgeschwindigkeit(in Pixel) zu den Koordinaten addiert
         Xcord+=Xspeed;
        // main.repaintAll();
     }
 
     public void ballBounced(){
-        Yspeed = Yspeed * -1;
+        Yspeed = Yspeed * -1;                       //Beim prallen des Balles wird die entsprechende Geschwindigkeit invertiert
 
     }
 
@@ -68,7 +68,7 @@ public class Ball {
 
     }
 
-    public void ballBouncedX() {
+    public void ballBouncedX() {                    //Bewegt sich ein Schläger wärend der Ball aufschlägt wird der Ball in diese Richtung beschleundigt
 
 
             if (schlaegerspeed == 0) {

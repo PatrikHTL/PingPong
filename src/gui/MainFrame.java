@@ -46,7 +46,7 @@ public class MainFrame extends JFrame{
 			exception.printStackTrace();
 		}
 
-		Object[] possibilities = {"Single-Player", "Multi-Player", "Network"};
+		Object[] possibilities = {"Single-Player", "Multi-Player", "Network"};		//Popup zum Auswählen des Spielmodies
 		s = (String) JOptionPane.showInputDialog(
 				null,
 				"Which mode would you choose?\n",
@@ -57,7 +57,7 @@ public class MainFrame extends JFrame{
 				"Single-Player");
 
 
-				if(s.equals("Network")) {
+				if(s.equals("Network")) {											//Popup zum wählen Server oder Client
 
 					JTextField online = new JTextField();
 					JTextField ip = new JTextField();
@@ -83,7 +83,7 @@ public class MainFrame extends JFrame{
 					}
 				}
 
-		if(s.equals("Single-Player")) {
+		if(s.equals("Single-Player")) {						//Bei Singleplayer wird der Bot mit wählbarer Schwirigkeit gestartet
 
 			JTextField text = new JTextField();
 			Object[] possibilities1levels = {"Noob", "Beginner", "Tryhard", "Advanced", "Pro", "God"};
@@ -116,7 +116,7 @@ public class MainFrame extends JFrame{
 			}
 		}
 
-		Thread zeichen = new Thread(new Runnable() {
+		Thread zeichen = new Thread(new Runnable() {		//Thread welcher die gui aktualisiert
 			@Override
 			public void run() {
 				while (true) {
@@ -134,22 +134,22 @@ public class MainFrame extends JFrame{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					ball.calcNextPosition();
+					ball.calcNextPosition();				//Die Klasse Ball berechnet seinen nächsten Punkt
 					double Xcord = ball.getXcord();
 					double Ycord = ball.getYcord()+20;
-					if (Ycord > 620 || Ycord < 36) {
-						ball.ballBounced();
+					if (Ycord > 620 || Ycord < 36) {		//Überprüfung ob Ball eine Horizontale Außenlinie Trifft
+						ball.ballBounced();					//Wenn ja... Wird die KLasse Ball benachrichtigt
 					}
-					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Xcord > meinSchlaeger.getXcord()+15)&& (Ycord>meinSchlaeger.getYcord()&& Ycord<meinSchlaeger.getYcord()+100)) {
-							ball.ballBouncedX();
+					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Xcord > meinSchlaeger.getXcord()+15)&& (Ycord>meinSchlaeger.getYcord()&& Ycord<meinSchlaeger.getYcord()+100)) {		//Überprüfung Schläger an richtiger Position ist wenn Ball Horizontale Außenlinie trifft
+							ball.ballBouncedX();		//Wenn ja... Ball wird zum umfrehen benachrichtigt
 					}else if(ball.getXcord()<= meinSchlaeger.getXcord()-20){
-						score.incScoreB();
+						score.incScoreB();				//Wenn nein... Gegnerscore wird incrementiert
 						try {
 							Thread.sleep(1000);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-						ball.resetBall();
+						ball.resetBall();				//UND zurückgesetzt
 						try {
 							Thread.sleep(500);
 						} catch (InterruptedException e) {
@@ -157,7 +157,7 @@ public class MainFrame extends JFrame{
 						}
 					}
 
-					if ((Xcord > gegnerSchlaeger.getXcord()-20)&& (Xcord > gegnerSchlaeger.getXcord()-15)&& (Ycord>gegnerSchlaeger.getYcord() && Ycord<gegnerSchlaeger.getYcord()+100)) {
+					if ((Xcord > gegnerSchlaeger.getXcord()-20)&& (Xcord > gegnerSchlaeger.getXcord()-15)&& (Ycord>gegnerSchlaeger.getYcord() && Ycord<gegnerSchlaeger.getYcord()+100)) { //Gleiches für 2. Spieler
 						ball.ballBouncedX();
 					}
 					else if(ball.getXcord()>= gegnerSchlaeger.getXcord()+20){
@@ -175,7 +175,7 @@ public class MainFrame extends JFrame{
 						}
 					}
 
-					if(down==true && meinSchlaeger.getYcord() <=515){
+					if(down==true && meinSchlaeger.getYcord() <=515){										//Schläger movements überprüfen
 						meinSchlaeger.setYcord(meinSchlaeger.getYcord()+schlaegerspeed);
 					}
 
@@ -192,18 +192,19 @@ public class MainFrame extends JFrame{
 			}
 		});
 		moveball.start();
-		if(s.equals("Single-Player")) {
+		if(s.equals("Single-Player")) {				//Starten des Bots
 			new Bot(MainFrame.this,level);
 		}
 	}
 
 
-	private void FrameInit() throws Exception {
+	private void FrameInit() throws Exception {		//Erstes Aufbauen des Fensters
 		contentPane = (JPanel) getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		contentPane.setDoubleBuffered(true);
 		contentPane.setFocusable(true);
-		contentPane.addKeyListener(new KeyListener() {
+
+		contentPane.addKeyListener(new KeyListener() {		//Key Listener für Schläger
 			@Override
 			public void keyTyped(KeyEvent e) {
 
@@ -213,8 +214,8 @@ public class MainFrame extends JFrame{
 			public void keyPressed(KeyEvent e) {
 
 
-				int key = e.getKeyCode();
-
+				int key = e.getKeyCode();					//Wird eine Taste gedrückt, wird eine Variable gesetzt und entsprechen dieser bei jeder Ball Berechnung auch die neuen Koordinaten der Schläger berechnet.
+															//Das sollte so gelöst werden weil grundsätzlich keine gleichzeitigen Tastendrücke mit "keyTyped" möglich sind
 				if (key == KeyEvent.VK_LEFT) {
 				    up=true;
 				}
