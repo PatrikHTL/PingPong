@@ -18,7 +18,7 @@ public class Bot extends Thread {
         while (true) {
             double Y = main.ball.getYcord() + 50;
             diff = (main.ball.getYcord() - main.gegnerSchlaeger.getYcord());
-
+                                                                                //Schläger wird mit der Geschwindigkeit entsprechend des Levels zur aktuellen Y Position des Balls bewegt
             if (diff > 0) {
                 //schlaeger unter ball:
                 if(main.gegnerSchlaeger.getYcord()>=520) {

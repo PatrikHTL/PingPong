@@ -34,19 +34,19 @@ public class Zeichnung extends JPanel {
 	}
 
 	@Override
-    public void paint(Graphics g) {
+    public void paint(Graphics g) {		//Wird bei jedem Repaint ausgeführt
         super.paint(g);
         lock.lock();
         double xval, yval;
 
-        g.setColor(Color.WHITE);
+        g.setColor(Color.WHITE);						//Umrandung zeichnen
         g.drawLine(50,10,950,10);
         g.drawLine(50,620,950,620);
         g.drawLine(50,10,50,620);
         g.drawLine(950,10,950,620);
         g.drawLine(500,10,500,620);
 
-        score.paintScore(g);
+        score.paintScore(g);							//Zeichen der einzelnen Elemente geschieht in einer eigenen Methoden in der der jeweiligen Klasse
         ball.paintBall(g);
         meinSchlaeger.paintSchlaeger(g);
         gegnerSchlaeger.paintSchlaeger(g);

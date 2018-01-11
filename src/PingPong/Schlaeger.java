@@ -5,7 +5,7 @@ import gui.Zeichnung;
 
 import java.awt.*;
 
-public class Schlaeger {
+public class Schlaeger {                                //Diese KLasse is für Darstellung und berechnung der Schläger zuständig
     private final double Xcord;
     private double Ycord;
     private double Yspeed;
@@ -25,7 +25,7 @@ public class Schlaeger {
 
     public double getXcord() {
         return Xcord;
-    }
+    }           //Getter für Koordinaten
 
     public double getYcord() {
         return Ycord;
