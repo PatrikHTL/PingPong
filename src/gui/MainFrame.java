@@ -12,8 +12,6 @@ import javax.swing.*;
 public class MainFrame extends JFrame{
 
 	private JPanel contentPane;
-	// Menü
-	private JMenuItem mi_beenden;
 
 	public Zeichnung zeich;
 	private JLabel lb_status;
