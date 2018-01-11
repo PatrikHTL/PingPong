@@ -10,16 +10,10 @@ import javax.swing.*;
 
 
 public class MainFrame extends JFrame{
-	// Konstanten
-	public static final int _AM = 0;
-	public static final int _FM = 1;
 
 	private JPanel contentPane;
-
 	// Menü
 	private JMenuItem mi_beenden;
-
-
 
 	public Zeichnung zeich;
 	private JLabel lb_status;
@@ -130,7 +124,7 @@ public class MainFrame extends JFrame{
 			public void run() {
 				while (true) {
 					try {
-						Thread.sleep(10);
+						Thread.sleep(10);		// sodass der Ball nicht zu schnell sich bewegt, sprich das der Thread nicht so schnell berechnet
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
