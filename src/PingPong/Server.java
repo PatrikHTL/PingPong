@@ -1,6 +1,7 @@
 package PingPong;
 
 import gui.MainFrame;
+import gui.Score;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,6 +19,7 @@ public class Server {                                       //Diese KLasse verwa
     private Ball ball;
     private Schlaeger meinSchläger;
     private Schlaeger gegnerSchläger;
+    private Score score;
 
     public Server(MainFrame main) {
 
@@ -25,6 +27,7 @@ public class Server {                                       //Diese KLasse verwa
         this.ball=main.ball;
         this.meinSchläger=main.meinSchlaeger;
         this.gegnerSchläger=main.gegnerSchlaeger;
+        this.score=main.score;
         try {
             server = new ServerSocket(46893);
             System.out.println("Awaiting Connection...");
@@ -43,7 +46,7 @@ public class Server {                                       //Diese KLasse verwa
         public void run() {
             while (client.isConnected()) {
                 try {           //Server sendet in rägelmäßigen abständen die Koordinaten um Server und Client zu syncronisieren
-                    outStream.writeObject(meinSchläger.getYcord() + ";" + ball.getXcord() + ";" + ball.getYcord() + ";" + ball.getXspeed() + ";" + ball.getYspeed());
+                    outStream.writeObject(meinSchläger.getYcord() + ";" + ball.getXcord() + ";" + ball.getYcord() + ";" + ball.getXspeed() + ";" + ball.getYspeed()+ ";" +score.getScoreA() + ";" + score.getScoreB());
 
                     gegnerSchläger.setYcord((double)inStream.readObject());     //Aktualisiert die position des Gegners (Antwort des Clients)
                     try {

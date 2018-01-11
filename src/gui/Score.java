@@ -26,6 +26,21 @@ public class Score {                    //Diese Klasse ist für die Anzeige des 
         scoreB++;
     }
 
+    public int getScoreA() {
+        return scoreA;
+    }
+
+    public void setScoreA(int scoreA) {
+        this.scoreA = scoreA;
+    }
+
+    public int getScoreB() {
+        return scoreB;
+    }
+
+    public void setScoreB(int scoreB) {
+        this.scoreB = scoreB;
+    }
 
     public void paintScore(Graphics g){
         g.setColor(Color.WHITE);
