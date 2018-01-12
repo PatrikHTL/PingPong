@@ -17,11 +17,11 @@ public class Ball {                            //Diese KLasse ist zum berechnen 
         this.main=main;
     }
 
-    public void setCord(double xcord, double ycord) {    //Setzen beider Coordinaten (Y,X)
+    public void setCord(double xcord, double ycord) {    //Setzen beider Koordinaten (Y,X)
         Xcord = xcord;
         Ycord = ycord;
     }
-    public void setSpeed(double Xspeed, double Yspeed) {    //Setzen beider Coordinaten (Y,X)
+    public void setSpeed(double Xspeed, double Yspeed) {    //Setzen beider Koordinaten (Y,X)
         this.Xspeed = Xspeed;
         this.Yspeed = Yspeed;
     }
@@ -34,7 +34,7 @@ public class Ball {                            //Diese KLasse ist zum berechnen 
 
     public double getXcord() {
         return Xcord;
-    }       //Getter zum abrufen der Koordinaten
+    }       //Getter zum Abrufen der Koordinaten
 
     public double getYcord() {
         return Ycord;
@@ -57,7 +57,7 @@ public class Ball {                            //Diese KLasse ist zum berechnen 
     }
 
     public void ballBounced(){
-        Yspeed = Yspeed * -1;                       //Beim prallen des Balles wird die entsprechende Geschwindigkeit invertiert
+        Yspeed = Yspeed * -1;                       //Beim Aufprallen des Balles wird die entsprechende Geschwindigkeit invertiert
 
     }
 
@@ -68,7 +68,7 @@ public class Ball {                            //Diese KLasse ist zum berechnen 
 
     }
 
-    public void ballBouncedX() {                    //Bewegt sich ein Schläger wärend der Ball aufschlägt wird der Ball in diese Richtung beschleundigt
+    public void ballBouncedX() {                    //Bewegt sich ein Schläger während der Ball aufschlägt wird der Ball in diese Richtung beschleunigt
 
 
             if (schlaegerspeed == 0) {

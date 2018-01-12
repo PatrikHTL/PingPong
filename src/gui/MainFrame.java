@@ -75,7 +75,7 @@ public class MainFrame extends JFrame{
 					}
 				}
 
-		if(s.equals("Single-Player")) {						//Bei Singleplayer wird der Bot mit wählbarer Schwirigkeit gestartet
+		if(s.equals("Single-Player")) {						//Bei Singleplayer wird der Bot mit wählbarer Schwierigkeit gestartet
 
 			JTextField text = new JTextField();
 			Object[] possibilities1levels = {"Noob", "Beginner", "Tryhard", "Advanced", "Pro", "God"};
@@ -129,11 +129,11 @@ public class MainFrame extends JFrame{
 					ball.calcNextPosition();				//Die Klasse Ball berechnet seinen nächsten Punkt
 					double Xcord = ball.getXcord();
 					double Ycord = ball.getYcord()+20;
-					if (Ycord > 620 || Ycord < 36) {		//Überprüfung ob Ball eine Horizontale Außenlinie Trifft
+					if (Ycord > 620 || Ycord < 36) {		//Überprüfung ob Ball eine Horizontale Außenlinie trifft
 						ball.ballBounced();					//Wenn ja... Wird die KLasse Ball benachrichtigt
 					}
 					if ((Xcord < meinSchlaeger.getXcord()+20)&& (Xcord > meinSchlaeger.getXcord()+15)&& (Ycord>meinSchlaeger.getYcord()&& Ycord<meinSchlaeger.getYcord()+100)) {		//Überprüfung Schläger an richtiger Position ist wenn Ball Horizontale Außenlinie trifft
-							ball.ballBouncedX();		//Wenn ja... Ball wird zum umfrehen benachrichtigt
+							ball.ballBouncedX();		//Wenn ja... Ball wird zum umdrehen benachrichtigt
 					}else if(ball.getXcord()<= meinSchlaeger.getXcord()-20){
 						score.incScoreB();				//Wenn nein... Gegnerscore wird incrementiert
 						try {
